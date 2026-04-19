@@ -1,0 +1,9 @@
+// Use 16:9 aspect ratio for featured images instead of fixed height
+.article-list article .article-image img {
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+.sidebar {
+    --sidebar-avatar-size: 200px !important;
+}

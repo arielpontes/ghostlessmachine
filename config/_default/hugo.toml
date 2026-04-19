@@ -1,0 +1,16 @@
+baseURL                = "https://example.github.io/ghostlessmachine/"
+languageCode           = "en-us"
+title                  = "Ghostless Machine"
+defaultContentLanguage = "en"
+hasCJKLanguage         = false
+theme                  = "hugo-theme-stack"
+
+[pagination]
+    pagerSize = 10
+
+[permalinks]
+    post = "/p/:slug/"
+    page = "/:slug/"
+
+[services.disqus]
+    shortname = "ghostlessmachine"

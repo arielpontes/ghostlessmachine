@@ -1,0 +1,15 @@
+---
+title: "Por que Ghostless Machine?"
+date: 2007-12-06T00:09:00
+slug: "titulo"
+---
+
+Muitos perguntam de onde vem o nome do blog. Os termos "ghost" e "machine" vêm de uma metáfora que Descartes usava para simbolizar o Dualismo (corpo/"alma") que ele defendia. Ele dizia que o corpo funciona como uma máquina, "tinha as propriedades materiais de extensão e movimento", e seguia as leis da física. A mente (ou "alma"/"ghost"), no entanto, era descrita como uma entidade não-material, sem essas propriedades materiais, e que não segue as leis da física.
+(Um fato interessante com o qual me deparei nessa pequena pesquisa é que Descartes achava que a alma ficava na glândula pineal, e também achava, erroneamente, que só humanos possuíam essa glândula e que, portanto, os animais não tinham mente. Isso levou Descartes à conclusão de que animais não sentiam dor, e então passou a dissecar animais vivos)
+Mais tarde, Gilbert Ryle (filósofo inglês) em seu livro "The Concept of Mind" ataca a visão cartesiana dizendo que devia ser descartada como um literalismo redundante trazido de uma época antes das ciências biológicas terem se estabelecido. Ele diz que o homem não é análogo a uma máquina e que os filósofos não precisam de um princípio obscuro para explicar suas habilidades super-mecânicas.
+Posteriormente, Arthur Koestler escreve o livro "The Ghost in the Machine" que é uma referência a essa metáfora, e também discorda dela dizendo que o cérebro se desenvolveu a partir de estruturas mais simples, e que ele é o único "ghost in the machine".
+Finalmente, Masamune Shirow cria o mangá "Ghost in the Shell" (que é adaptado em 3 filmes e 2 séries, e é daí que eu comecei a procurar sobre o assunto) que trata de temas ligados ao dualismo, num futuro não muito distante em que as pessoas substituem partes de seus corpos por outras artificiais mais eficientes, em alguns casos chegando ao ponto em http://www.blogger.com/img/gl.link.gifque só o que resta de original são partes do cérebro orgânico, e o "ghost" (que tem mais um sentido de "consciência" do que "alma").
+<http://www.youtube.com/watch?v=XHfs7OQ_Cwk> (pra mim essas são as cenas mais filosoficas…)
+O nome é uma referencia a isso tudo. Para mim, eu sou uma máquina tão complexa que "pensa". Mas isso não implica nenhuma "alma" ou coisa do tipo. Acredito que tudo possa ser reduzido a biofísica, bioquímica, eletroquímica. Interação entre matéria.
+Essa é a única hipótese que faz sentido para mim. A única fundamentada em evidências. As outras me parecem criações utópicas da mente humana, cheias de apelos sobrenaturais e moldadas da forma que mais os conforte. Acho que pode-se dizer que meus devaneios filosóficos começaram a partir de questionamentos como esses, então achei um bom nome (também porque era um dos poucos disponíveis, devo admitir heheh).
+Acho que o blog vai ser útil pra eu organizar melhor meus pensamentos e não precisar escrever a mesma coisa quinhentas vezes cada vez que eu resolver propôr alguma das minhas questões a alguém.

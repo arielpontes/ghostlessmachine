@@ -1,0 +1,24 @@
+[01/Jul/2020:19:49:21] (I): WordPress Instance Info:
+[01/Jul/2020:19:49:21] (I): Home URL : http://ghostlessmachine.com
+[01/Jul/2020:19:49:21] (I): Site URL : http://ghostlessmachine.com
+[01/Jul/2020:19:49:21] (I): WordPress Version : 5.4.2
+[01/Jul/2020:19:49:21] (I): Onboarding Version : 1.0.1
+[01/Jul/2020:19:49:21] (I): Multisite : No
+[01/Jul/2020:19:49:21] (I): Server Info : LiteSpeed
+[01/Jul/2020:19:49:21] (I): PHP Version : 7.2.29
+[01/Jul/2020:19:49:21] (I): HTTPS : No
+[01/Jul/2020:19:49:21] (I): PHP Max Execution Time : 60
+[01/Jul/2020:19:49:21] (I): PHP Max Input Vars : 5000
+[01/Jul/2020:19:49:21] (I): Max Upload Size : 67108864
+[01/Jul/2020:19:49:21] (I): Plugins:
+[01/Jul/2020:19:49:21] (I): [PLUGIN] Polylang : v2.7.2 (WP SYNTEX)
+[01/Jul/2020:19:49:21] (I): [PLUGIN] Elementor : v2.9.8 (Elementor.com)
+[01/Jul/2020:19:49:21] (I): [PLUGIN] LH Add Media from URL : v1.15 (Peter Shaw)
+[01/Jul/2020:19:49:21] (I): [PLUGIN] Ocean Extra : v1.6.3 (OceanWP)
+[01/Jul/2020:19:49:21] (I): [PLUGIN] Gutenberg Blocks and Template Library by Otter : v1.5.5 (ThemeIsle)
+[01/Jul/2020:19:49:21] (I): [PLUGIN] Quick Featured Images : v13.4.1 (Martin Stehle)
+[01/Jul/2020:19:49:21] (I): [PLUGIN] Quick Page/Post Redirect Plugin : v5.1.8 (anadnet)
+[01/Jul/2020:19:49:21] (I): [PLUGIN] Sidebar Content Clone : v1.1 (Gaurang Sondagar)
+[01/Jul/2020:19:49:21] (I): [PLUGIN] Orbit Fox Companion : v2.9.8 (Themeisle)
+[01/Jul/2020:19:49:21] (I): [PLUGIN] UpdraftPlus - Backup/Restore : v1.16.25 (UpdraftPlus.Com, DavidAnderson)
+[01/Jul/2020:19:49:21] (I): [PLUGIN] WPForms Lite : v1.6.1 (WPForms)

@@ -1,0 +1,9 @@
+[en]
+    languageName = "English"
+    title        = "Ghostless Machine"
+    weight       = 1
+
+[pt]
+    languageName = "Português"
+    title        = "Ghostless Machine"
+    weight       = 2

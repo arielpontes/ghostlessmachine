@@ -1,0 +1,15 @@
+# Hugo
+/public/
+/resources/_gen/
+/.hugo_build.lock
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# WordPress export (not needed in repo)
+wordpress-export.xml
