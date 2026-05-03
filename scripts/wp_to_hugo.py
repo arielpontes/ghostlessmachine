@@ -4,9 +4,8 @@ Convert WordPress XML export to Hugo markdown files.
 Handles multilingual content (English and Portuguese via Polylang).
 """
 
-import xml.etree.ElementTree as ET
-import os
 import re
+import xml.etree.ElementTree as ET
 from datetime import datetime
 from html import unescape
 from pathlib import Path
@@ -80,7 +79,9 @@ def html_to_markdown(html_content):
     return markdown.strip()
 
 
-def create_frontmatter(title, date, categories, tags, slug, draft=False, image=None):
+def create_frontmatter(
+    title, date, categories, tags, slug, draft=False, image=None
+):
     """Create Hugo frontmatter."""
     lines = ["---"]
 
@@ -141,7 +142,10 @@ def process_wordpress_export(xml_path, output_dir):
     attachment_map = {}
     for item in items:
         post_type_elem = item.find("wp:post_type", ns)
-        if post_type_elem is not None and parse_cdata(post_type_elem.text) == "attachment":
+        if (
+            post_type_elem is not None
+            and parse_cdata(post_type_elem.text) == "attachment"
+        ):
             post_id_elem = item.find("wp:post_id", ns)
             attachment_url_elem = item.find("wp:attachment_url", ns)
             if post_id_elem is not None and attachment_url_elem is not None:
@@ -149,7 +153,9 @@ def process_wordpress_export(xml_path, output_dir):
                 url = parse_cdata(attachment_url_elem.text)
                 # Convert to local path
                 if "wp-content/uploads/" in url:
-                    local_path = "/uploads/" + url.split("wp-content/uploads/")[-1]
+                    local_path = (
+                        "/uploads/" + url.split("wp-content/uploads/")[-1]
+                    )
                     attachment_map[post_id] = local_path
 
     print(f"  Found {len(attachment_map)} attachments")
@@ -169,7 +175,11 @@ def process_wordpress_export(xml_path, output_dir):
 
         # Get status
         status_elem = item.find("wp:status", ns)
-        status = parse_cdata(status_elem.text) if status_elem is not None else "draft"
+        status = (
+            parse_cdata(status_elem.text)
+            if status_elem is not None
+            else "draft"
+        )
 
         # Skip private/trash posts
         if status in ("private", "trash", "inherit"):
@@ -181,7 +191,9 @@ def process_wordpress_export(xml_path, output_dir):
 
         # Get content
         content_elem = item.find("content:encoded", ns)
-        content = parse_cdata(content_elem.text) if content_elem is not None else ""
+        content = (
+            parse_cdata(content_elem.text) if content_elem is not None else ""
+        )
 
         # Skip empty posts
         if not content.strip():
@@ -223,7 +235,10 @@ def process_wordpress_export(xml_path, output_dir):
         for postmeta in item.findall("wp:postmeta", ns):
             meta_key = postmeta.find("wp:meta_key", ns)
             meta_value = postmeta.find("wp:meta_value", ns)
-            if meta_key is not None and parse_cdata(meta_key.text) == "_thumbnail_id":
+            if (
+                meta_key is not None
+                and parse_cdata(meta_key.text) == "_thumbnail_id"
+            ):
                 thumbnail_id = parse_cdata(meta_value.text)
                 if thumbnail_id in attachment_map:
                     featured_image = attachment_map[thumbnail_id]
@@ -237,7 +252,13 @@ def process_wordpress_export(xml_path, output_dir):
 
         # Create frontmatter
         frontmatter = create_frontmatter(
-            title, formatted_date, categories, tags, slug, is_draft, featured_image
+            title,
+            formatted_date,
+            categories,
+            tags,
+            slug,
+            is_draft,
+            featured_image,
         )
 
         # Determine output path
@@ -249,8 +270,9 @@ def process_wordpress_export(xml_path, output_dir):
             stats["pages"] += 1
 
         # Create directory structure for multilingual
-        # Hugo Stack theme uses: content/post/my-post/index.md for default language
-        # and content/post/my-post/index.pt.md for Portuguese
+        # Hugo Stack theme uses: content/post/my-post/index.md for
+        # default language and content/post/my-post/index.pt.md for
+        # Portuguese
 
         output_subdir = Path(output_dir) / content_type / slug
         output_subdir.mkdir(parents=True, exist_ok=True)
@@ -266,7 +288,11 @@ def process_wordpress_export(xml_path, output_dir):
 
         print(f"  Created: {output_file}")
 
-    print(f"\nDone! Created {stats['posts']} posts, {stats['pages']} pages, skipped {stats['skipped']} items.")
+    print(
+        f"\nDone! Created {stats['posts']} posts, "
+        f"{stats['pages']} pages, "
+        f"skipped {stats['skipped']} items."
+    )
 
 
 if __name__ == "__main__":

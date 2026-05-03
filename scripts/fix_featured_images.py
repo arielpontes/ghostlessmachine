@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Move featured images from static/uploads to post directories for Hugo Stack theme.
+Move featured images from static/uploads to post directories for
+Hugo Stack theme.
 """
 
-import os
 import re
 import shutil
 from pathlib import Path
@@ -16,7 +16,11 @@ def process_post(post_dir, static_dir):
         content = md_file.read_text(encoding="utf-8")
 
         # Find image in frontmatter
-        match = re.search(r'^image:\s*["\']?(/uploads/[^"\'"\n]+)["\']?', content, re.MULTILINE)
+        match = re.search(
+            r'^image:\s*["\']?(/uploads/[^"\'"\n]+)["\']?',
+            content,
+            re.MULTILINE,
+        )
         if not match:
             continue
 
@@ -41,7 +45,7 @@ def process_post(post_dir, static_dir):
             r'^(image:\s*)["\']?/uploads/[^"\'"\n]+["\']?',
             f'\\1"{filename}"',
             content,
-            flags=re.MULTILINE
+            flags=re.MULTILINE,
         )
 
         if new_content != content:
