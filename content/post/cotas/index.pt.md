@@ -19,7 +19,7 @@ https://www.youtube.com/watch?v=8h2GkJPoVyQ
 
 Semana passada recebi um email periódico do [Votenaweb](http://www.votenaweb.com.br/) que nos convidava a opinar [nesse projeto de lei](http://www.votenaweb.com.br/projetos/plc-5384-2013). Como esperava, a opinião popular não foi muito favorável.
 
-[![reaction](http://ghostlessmachine.com/wp-content/uploads/2015/06/reaction.png)](http://ghostlessmachine.com/wp-content/uploads/2015/06/reaction.png)
+[![reaction](/uploads/2015/06/reaction.webp)](/uploads/2015/06/reaction.webp)
 
 # Isso é discriminação! Todos são iguais perante a lei!
 

@@ -96,7 +96,7 @@ Será que não há nada parecido acontecendo no Brasil?
 
 |  |
 | --- |
-| [missbrasil](http://ghostlessmachine.com/wp-content/uploads/2014/02/missbrasil.jpeg) |
+| [missbrasil](/uploads/2014/02/missbrasil.jpg) |
 | Concurso Miss Brasil em 1954 |
 
 |  |
