@@ -1,6 +1,6 @@
 ---
 name: hugo
-description: Hugo static-site lessons for the ghostlessmachine WordPress→Hugo migration. Covers Stack theme quirks (featured images as page bundles, sidebar avatar, custom SCSS overrides), multilingual content, cache busting, and WordPress export gotchas. Load when working with Hugo content, theme, config, or migration scripts in this repo.
+description: Hugo static-site lessons for the ghostlessmachine WordPress→Hugo migration. Covers Stack theme quirks (featured images as page bundles, sidebar avatar, custom SCSS overrides), multilingual content, cache busting, GitHub Pages deploys (CI Hugo version, Pages enablement), and WordPress export gotchas. Load when working with Hugo content, theme, config, deploy workflow, or migration scripts in this repo.
 ---
 
 # Hugo Skills
@@ -130,6 +130,41 @@ Configure in `config/_default/languages.toml`:
     languageName = "Português"
     weight = 2
 ```
+
+## GitHub Pages Deployment
+
+### Pages Must Be Enabled First
+
+The deploy workflow (`.github/workflows/hugo.yml`) fails at the
+"Setup Pages" step with `Get Pages site failed ... Not Found` if GitHub
+Pages was never enabled on the repository. Enable it with the
+"GitHub Actions" source (one-time setup):
+
+```bash
+gh api repos/<owner>/<repo>/pages -X POST -f build_type=workflow
+```
+
+### Keep CI Hugo Version in Sync with Local
+
+`HUGO_VERSION` in `.github/workflows/hugo.yml` must be new enough for
+the Stack theme. With Hugo 0.147.1 the build failed on every page with:
+
+```text
+can't evaluate field IsImageResourceWithMeta in type interface {}
+```
+
+because the theme calls `reflect.IsImageResourceWithMeta`, which that
+version doesn't have. When the theme is updated or builds start failing
+with "can't evaluate field X" template errors, bump `HUGO_VERSION` to
+match the local Hugo version (`hugo version`) where the build passes.
+
+### Dead Remote Image URLs Slow the Build
+
+Posts still referencing dead `ghostlessmachine.com/wp-content/...`
+URLs make the theme's image helper call `resources.GetRemote`, which
+times out (~30s total per build) and logs WARNs. Not fatal, but each
+of these renders as a broken image on the live site — see
+`missing-images.txt` for the backlog.
 
 ## WordPress Migration
 
