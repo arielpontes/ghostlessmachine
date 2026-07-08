@@ -1,3 +1,8 @@
+---
+name: hugo
+description: Hugo static-site lessons for the ghostlessmachine WordPress→Hugo migration. Covers Stack theme quirks (featured images as page bundles, sidebar avatar, custom SCSS overrides), multilingual content, cache busting, and WordPress export gotchas. Load when working with Hugo content, theme, config, or migration scripts in this repo.
+---
+
 # Hugo Skills
 
 ## Stack Theme
@@ -82,6 +87,22 @@ Default theme uses fixed height (`--article-image-height`). To use 16:9:
     aspect-ratio: 16 / 9;
 }
 ```
+
+## Local Dev URLs
+
+The site's `baseURL` is `https://arielpontes.github.io/ghostlessmachine/`
+(GitHub Pages project-site form: `https://<username>.github.io/<repo-name>/`).
+`hugo server` preserves the `/ghostlessmachine/` path prefix.
+
+**Always include the prefix when giving local dev URLs**, e.g.:
+
+- A page → `http://localhost:1313/ghostlessmachine/about/`
+- A post → `http://localhost:1313/ghostlessmachine/p/<slug>/`
+- A PT post → `http://localhost:1313/ghostlessmachine/pt/p/<slug>/`
+
+Bare `/about/` will 404. If you ever migrate to a custom domain at the
+apex (e.g. `https://ghostlessmachine.com/`), update `baseURL` and the
+prefix goes away.
 
 ## Hugo Cache
 
