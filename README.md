@@ -78,6 +78,19 @@ python scripts/fix_featured_images.py
 Copies featured images from `static/uploads/` into each post's directory
 (required by the Stack theme's page bundle approach).
 
+## TODO
+
+Pages migrated from WordPress that need review (decide whether to keep,
+delete, or repurpose):
+
+- `content/page/14d9b-about-me/` — looks like an old/duplicate About page
+- `content/page/14d9b-contact/` — looks like an old/duplicate Contact page
+- `content/page/home/` — legacy WordPress home page (en)
+- `content/page/home-pt/` — legacy WordPress home page (pt)
+- `content/page/anniversaries/` — purpose unclear
+- `content/page/mailing-list/` — contains only `[newsletter]` shortcode
+- `content/page/rocitizen-app-privacy-policy/` — privacy policy for an app
+
 ## Deployment
 
 The site is deployed to GitHub Pages via GitHub Actions. Push to `master` to
