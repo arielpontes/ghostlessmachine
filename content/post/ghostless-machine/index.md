@@ -5,6 +5,11 @@ slug: "ghostless-machine"
 image: "gm-elevator.jpg"
 categories:
   - "Philosophy"
+menu:
+    main:
+        weight: -80
+        params:
+            icon: infinity
 ---
 
 Many people wonder where the name of the blog comes from. The terms “ghost” and “machine” were taken from a metaphor that Descartes used to symbolize the dualism (body/ “soul”) which he defended. He believed that the body worked like a machine, “had the material properties of extension and movement”, and followed the laws of physics. The mind (“soul”/ “spirit”), however, was described as a non-material entity which didn’t conform to natural laws. (An interesting fact I came across in my short research is that Descartes thought that the soul resided in the pineal gland which he mistakenly believed only humans possessed and, thus, that animals didn’t have a mind. This made Descartes conclude that animals didn’t feel pain, so he started dissecting live animals.)

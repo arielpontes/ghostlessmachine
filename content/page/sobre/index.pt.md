@@ -2,6 +2,11 @@
 title: "Sobre"
 date: 2014-07-12T08:00:08
 slug: "sobre"
+menu:
+    main:
+        weight: -90
+        params:
+            icon: user
 ---
 
 Meu nome é Ariel Pontes. Sou o criador e escritor dos textos publicados nesse blog. Sou formado em engenharia da computação na PUC-Rio e atualmente trabalho com desenvolvimento web em Cluj-Napoca, Romênia. No meu tempo livre, porém, gosto de mudar de assunto e ler, escrever e discutir sobre filosofia, ciência, religião, biologia evolutiva e sociedade no geral. Qualquer assunto controverso com potencial para gerar embates ideológicos é bem vindo.

@@ -3,6 +3,11 @@ title: "About"
 date: 2012-04-30T21:26:15
 slug: "about"
 image: "og-image.png"
+menu:
+    main:
+        weight: -90
+        params:
+            icon: user
 ---
 
 ![](http://ghostlessmachine.com/wp-content/uploads/2021/08/me-2021-1024x1024.jpg)

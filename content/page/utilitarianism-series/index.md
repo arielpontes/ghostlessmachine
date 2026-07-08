@@ -2,6 +2,11 @@
 title: "Utilitarianism series"
 date: 2021-11-07T14:34:13
 slug: "utilitarianism-series"
+menu:
+    main:
+        weight: -70
+        params:
+            icon: link
 ---
 
 ## Utilitarianism series

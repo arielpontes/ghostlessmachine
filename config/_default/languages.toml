@@ -3,7 +3,23 @@
     title        = "Ghostless Machine"
     weight       = 1
 
+    [[en.menu.main]]
+        identifier = "home"
+        name       = "Home"
+        url        = "/"
+        weight     = -100
+        [en.menu.main.params]
+            icon = "home"
+
 [pt]
     languageName = "Português"
     title        = "Ghostless Machine"
     weight       = 2
+
+    [[pt.menu.main]]
+        identifier = "home"
+        name       = "Home"
+        url        = "/"
+        weight     = -100
+        [pt.menu.main.params]
+            icon = "home"
