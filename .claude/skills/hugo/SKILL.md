@@ -14,7 +14,7 @@ This project uses the [hugo-theme-stack](https://github.com/CaiJimmy/hugo-theme-
 **Important:** The Stack theme requires featured images to be **page resources**
 (files in the same directory as the post), NOT static files in `/static/`.
 
-```
+```text
 content/post/my-post/
 ├── index.md          # Post content
 └── featured.jpg      # Featured image (same directory)
@@ -189,3 +189,57 @@ find content -name "*.md" -exec sed -i '' \
 WordPress featured images need to be copied into each post's directory
 since Stack theme requires page bundle resources. See the
 `scripts/fix_featured_images.py` script.
+
+## Importing Medium posts
+
+Newer posts are published on Medium only; locally they were WordPress
+"stubs" (frontmatter + featured image + subtitle as the only body line).
+Use `scripts/import_medium.py` to pull the full article into the bundle:
+
+```bash
+python3 scripts/import_medium.py <medium_url> [--slug <local-slug>] [--force]
+```
+
+What it does:
+
+- Fetches the article via Medium's GraphQL API. **Use the
+  `arielpontes.medium.com` subdomain endpoint** (`/_/graphql`) — plain
+  `medium.com` is behind Cloudflare and blocks curl/urllib.
+- Converts paragraphs to Markdown (headings, lists, quotes, images,
+  YouTube embeds). Markup offsets from Medium are **UTF-16 code units**,
+  not characters — the script handles this.
+- Downloads inline images from `miro.medium.com` into the page bundle.
+- Preserves existing stub frontmatter and adds `medium_url` plus
+  `description` (the Medium subtitle, shown as the card subtitle).
+- Refuses to overwrite a non-stub body (> 60 words) without `--force`.
+
+### Member-only (paywalled) posts
+
+For posts with Medium's member paywall, the anonymous API returns only a
+preview (`content.isLockedPreviewOnly: true`) and the script aborts. Fetch
+the content from a **logged-in browser** instead: open any
+`arielpontes.medium.com` page, run the `CONTENT_QUERY` from the script
+against `/_/graphql` with `credentials: 'include'`, save the JSON response
+to a file, and run the script with `--json <file>`.
+
+### Enumerating all Medium posts
+
+The full post list (IDs, titles, URLs) comes from the same GraphQL
+endpoint with the `UserStreamOverview` query, `userId: "85e7326edac3"`,
+paginating with `pagingOptions.to` cursors. The RSS feed
+(`arielpontes.medium.com/feed`) only returns the 10 newest posts.
+
+### Redirecting list cards to Medium
+
+Posts with `medium_url` in frontmatter link to Medium from the homepage
+and other list pages, while the local page still exists (reachable via
+search, archives single view, direct URL). This is done by overriding the
+theme partials in `layouts/_partials/article/components/header.html` and
+`details.html`: when `IsList` is true and `.Params.medium_url` is set, the
+card's image and title anchors use the Medium URL instead of
+`.RelPermalink`.
+
+As of July 2026, everything from "Performative language" (2020-06) onward
+is imported with `medium_url` set. Older stubs (e.g. `conspiracy-theories`,
+`on-jordan-peterson`, `why-im-not-a-theist`) are still stubs and could be
+imported the same way.

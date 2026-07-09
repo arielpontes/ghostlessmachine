@@ -1,0 +1,30 @@
+{{- $IsList := .IsList -}}
+{{- $Page := .Page -}}
+{{- /* Site override: on list pages, posts with medium_url in frontmatter link to Medium instead of the local page. */ -}}
+{{- $link := $Page.RelPermalink -}}
+{{- if and $IsList $Page.Params.medium_url -}}
+    {{- $link = $Page.Params.medium_url -}}
+{{- end -}}
+<header class="article-header">
+    {{- $image := partial "helper/image" (dict "Image" $Page.Params.image "Resources" $Page.Resources "Context" $Page) -}}
+    {{ if $image }}
+    <div class="article-image">
+        <a href="{{ $link }}">
+            {{ partial "helper/responsive-image" (dict
+                "Resource" $image.Resource
+                "Widths" (cond $Page.Site.Params.ImageProcessing.Content.Enabled $Page.Site.Params.ImageProcessing.Content.Widths nil)
+                "Attributes" (dict
+                    "src" $image.Permalink
+                    "width" $image.Width
+                    "height" $image.Height
+                    "alt" (printf "Featured image of post %s" $Page.Title)
+                    "loading" "lazy"
+                    "sizes" "(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"
+                )
+            ) }}
+        </a>
+    </div>
+    {{ end }}
+
+    {{ partial "article/components/details" (dict "Page" $Page "IsList" $IsList) }}
+</header>
