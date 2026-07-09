@@ -3,6 +3,12 @@
 A bilingual (English/Portuguese) Hugo site migrated from WordPress, using the
 [hugo-theme-stack](https://github.com/CaiJimmy/hugo-theme-stack).
 
+## Python scripts
+
+Python dependencies are managed with [uv](https://docs.astral.sh/uv/)
+(`pyproject.toml` + `uv.lock`). Run scripts with
+`uv run scripts/<name>.py` — never use pip or create virtualenvs manually.
+
 ## Hugo lessons
 
 A `/hugo` skill at `.claude/skills/hugo/SKILL.md` collects lessons learned

@@ -197,7 +197,7 @@ Newer posts are published on Medium only; locally they were WordPress
 Use `scripts/import_medium.py` to pull the full article into the bundle:
 
 ```bash
-python3 scripts/import_medium.py <medium_url> [--slug <local-slug>] [--force]
+uv run scripts/import_medium.py <medium_url> [--slug <local-slug>] [--force]
 ```
 
 What it does:

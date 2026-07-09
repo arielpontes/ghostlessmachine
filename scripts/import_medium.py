@@ -8,8 +8,8 @@ bundle's index.md preserving the existing frontmatter (title, date, slug,
 image, categories) while adding `medium_url` and `description`.
 
 Usage:
-    python3 scripts/import_medium.py <medium_url> [--slug SLUG] [--json FILE]
-                                     [--force]
+    uv run scripts/import_medium.py <medium_url> [--slug SLUG] [--json FILE]
+                                    [--force]
 
 - <medium_url>: the article URL (post ID is taken from its last segment).
 - --slug: local bundle name under content/post/. Defaults to a slugified

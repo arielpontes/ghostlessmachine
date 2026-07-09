@@ -6,7 +6,8 @@ A Hugo-powered static blog migrated from WordPress, using the
 ## Requirements
 
 - [Hugo](https://gohugo.io/) (extended version recommended)
-- Python 3.14+ (for migration scripts only)
+- [uv](https://docs.astral.sh/uv/) (for migration scripts only; manages
+  Python 3.14+ and dependencies via `pyproject.toml`/`uv.lock`)
 
 ## Local Development
 
@@ -53,18 +54,14 @@ The site supports English and Portuguese:
 
 Scripts used to migrate from WordPress. Only needed once.
 
-### Setup
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+Dependencies are managed with [uv](https://docs.astral.sh/uv/): running any
+script with `uv run` automatically creates the virtualenv and installs the
+locked dependencies from `uv.lock`.
 
 ### Convert WordPress Export
 
 ```bash
-python scripts/wp_to_hugo.py
+uv run scripts/wp_to_hugo.py
 ```
 
 Converts `wordpress-export.xml` to Hugo markdown files in `content/`.
@@ -72,7 +69,7 @@ Converts `wordpress-export.xml` to Hugo markdown files in `content/`.
 ### Fix Featured Images
 
 ```bash
-python scripts/fix_featured_images.py
+uv run scripts/fix_featured_images.py
 ```
 
 Copies featured images from `static/uploads/` into each post's directory
