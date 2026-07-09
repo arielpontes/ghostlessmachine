@@ -12,6 +12,20 @@ custom SCSS, multilingual content, cache busting).
 **After fixing a Hugo issue, always offer to save the lessons learned to
 the `/hugo` skill** so future sessions don't have to rediscover them.
 
+## Markdown linting
+
+Every markdown file delivered — written by hand OR produced by a generator
+script (e.g. `scripts/import_medium.py`) — must pass `markdownlint`
+(installed via Homebrew; repo config in `.markdownlint.yaml`). Before
+finishing any task that creates or edits markdown, run:
+
+```bash
+markdownlint <changed files>
+```
+
+and fix every error. If a generator script produces non-compliant output,
+fix the generator, not just the generated files.
+
 ## Broken images from the WordPress migration (paused, not abandoned)
 
 Some old posts lost images during the WordPress export. An effort to recover

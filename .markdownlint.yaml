@@ -1,0 +1,16 @@
+# markdownlint config for this repo (blog content).
+
+# Prose is written one line per paragraph; Hugo and editors soft-wrap.
+MD013: false
+
+# The same subheading may legitimately repeat under different sections
+# (e.g. "The pros" / "The cons" under two H2s).
+MD024:
+  siblings_only: true
+
+# Standalone *italic* paragraphs are used as image captions.
+MD036: false
+
+# Article text imported verbatim from Medium may use link text like
+# "here"; we don't rewrite published prose to satisfy lint.
+MD059: false
