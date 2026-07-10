@@ -4,6 +4,52 @@
     aspect-ratio: 16 / 9;
 }
 
+// Display post cards in a responsive grid instead of a single column.
+// Cards were designed full-width, so scale the type down to fit.
+.article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    align-items: stretch;
+
+    @include respond(lg) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .article-title {
+        font-size: 1.8rem;
+
+        @include respond(xl) {
+            font-size: 2rem;
+        }
+    }
+
+    .article-subtitle {
+        font-size: 1.5rem;
+
+        @include respond(xl) {
+            font-size: 1.6rem;
+        }
+    }
+
+    .article-details {
+        padding: var(--spacing-lg);
+        flex-grow: 1;
+        justify-content: flex-start;
+    }
+}
+
 .sidebar {
     --sidebar-avatar-size: 200px !important;
+}
+
+// Narrow the right sidebar (theme default: 30% / 25%) to give the post grid more room
+.container.extended {
+    @include respond(lg) {
+        --right-sidebar-max-width: 20%;
+    }
+
+    @include respond(xl) {
+        --right-sidebar-max-width: 18%;
+    }
 }
