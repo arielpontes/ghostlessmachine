@@ -1,0 +1,4 @@
+{{- /* Site override: pages with redirect_url in frontmatter (e.g. podcast posts) redirect to that URL, recreating the WordPress-era redirects. */ -}}
+{{- with .Params.redirect_url }}
+<meta http-equiv="refresh" content="0; url={{ . }}">
+{{- end }}

@@ -243,3 +243,19 @@ As of July 2026, everything from "Performative language" (2020-06) onward
 is imported with `medium_url` set. Older stubs (e.g. `conspiracy-theories`,
 `on-jordan-peterson`, `why-im-not-a-theist`) are still stubs and could be
 imported the same way.
+
+### Redirecting podcast posts to YouTube
+
+Podcast posts (🎙️ in the title) are stubs whose real content is a YouTube
+video; on WordPress they were full redirects. Setting `redirect_url` in
+frontmatter recreates this:
+
+- The single page emits `<meta http-equiv="refresh" content="0; url=...">`
+  via the site override of the theme's empty
+  `layouts/_partials/head/custom.html` hook.
+- List cards link directly to the URL — the same two partial overrides
+  used for `medium_url` also honor `redirect_url` (which takes precedence
+  if both are set).
+
+Unlike `medium_url`, a `redirect_url` page is never really viewable
+locally — even a direct visit bounces to the target.

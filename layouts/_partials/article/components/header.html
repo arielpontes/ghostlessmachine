@@ -1,9 +1,10 @@
 {{- $IsList := .IsList -}}
 {{- $Page := .Page -}}
-{{- /* Site override: on list pages, posts with medium_url in frontmatter link to Medium instead of the local page. */ -}}
+{{- /* Site override: on list pages, posts with redirect_url or medium_url in frontmatter link there instead of the local page. */ -}}
 {{- $link := $Page.RelPermalink -}}
-{{- if and $IsList $Page.Params.medium_url -}}
-    {{- $link = $Page.Params.medium_url -}}
+{{- $external := or $Page.Params.redirect_url $Page.Params.medium_url -}}
+{{- if and $IsList $external -}}
+    {{- $link = $external -}}
 {{- end -}}
 <header class="article-header">
     {{- $image := partial "helper/image" (dict "Image" $Page.Params.image "Resources" $Page.Resources "Context" $Page) -}}
