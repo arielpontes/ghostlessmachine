@@ -12,8 +12,9 @@ Usage:
                                     [--force]
 
 - <medium_url>: the article URL (post ID is taken from its last segment).
-- --slug: local bundle name under content/post/. Defaults to a slugified
-  version of the article title.
+- --slug: URL slug of the local bundle under content/post/ (folder names
+  are date-prefixed: YYYY-MM-DD-<slug>). Defaults to a slugified version
+  of the article title.
 - --json: path to a saved GraphQL response for the post. Needed for
   member-only posts, where the anonymous API returns only a preview: run
   the query in a logged-in browser and save the response (see the /hugo
@@ -305,7 +306,7 @@ def update_index(bundle_dir, post, description, body, force):
         lines = [
             f'title: "{post["title"]}"',
             f"date: {date}",
-            f'slug: "{bundle_dir.name}"',
+            f'slug: "{re.sub(r"^\\d{4}-\\d{2}-\\d{2}-", "", bundle_dir.name)}"',
         ]
         preview_id = (post.get("previewImage") or {}).get("id")
         if preview_id:
@@ -321,7 +322,9 @@ def update_index(bundle_dir, post, description, body, force):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("medium_url")
-    parser.add_argument("--slug", help="local bundle name under content/post/")
+    parser.add_argument(
+        "--slug", help="URL slug of the local bundle under content/post/"
+    )
     parser.add_argument("--json", help="saved GraphQL response for member-only posts")
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
@@ -347,7 +350,20 @@ def main():
         )
 
     slug = args.slug or slugify(post["title"])
+    # Bundle folders are date-prefixed (YYYY-MM-DD-<slug>); the URL slug in
+    # frontmatter is not.
     bundle_dir = POSTS_DIR / slug
+    if not bundle_dir.is_dir():
+        matches = list(POSTS_DIR.glob(f"????-??-??-{slug}"))
+        if len(matches) > 1:
+            sys.exit(f"Multiple bundles match {slug}: {matches}")
+        if matches:
+            bundle_dir = matches[0]
+        else:
+            date_prefix = time.strftime(
+                "%Y-%m-%d", time.localtime(post["firstPublishedAt"] / 1000)
+            )
+            bundle_dir = POSTS_DIR / f"{date_prefix}-{slug}"
     bundle_dir.mkdir(exist_ok=True)
     print(f"{post['title']} -> {bundle_dir.relative_to(POSTS_DIR.parent.parent)}")
     description, body = to_markdown(post, bundle_dir)
