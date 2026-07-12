@@ -39,6 +39,40 @@
     }
 }
 
+// Intro card above the homepage post grid (content in content/_index*.md).
+// The background image is dark in both color schemes, so text is fixed white
+// and links can't use the theme's accent/highlight (illegible in light mode).
+.homepage-intro {
+    @include card-style;
+    padding: var(--card-padding);
+    // Black overlay on top of the image for text legibility;
+    // raise/lower the alpha to make the card darker/brighter.
+    --intro-overlay: rgba(0, 0, 0, 0.55);
+
+    background:
+        linear-gradient(var(--intro-overlay), var(--intro-overlay)),
+        #000 url(../img/machine-bw.jpg) center / cover no-repeat;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    font-size: 1.6rem;
+    line-height: 1.6;
+
+    p {
+        margin: 0;
+    }
+
+    a,
+    a:hover {
+        color: #fff;
+    }
+
+    a.link,
+    a.link:hover {
+        box-shadow: none;
+        text-decoration: underline;
+    }
+}
+
 .sidebar {
     --sidebar-avatar-size: 200px !important;
 }
