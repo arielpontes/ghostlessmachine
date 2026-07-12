@@ -44,6 +44,28 @@ Configure in `config/_default/params.toml`:
 
 Place the image in `assets/img/avatar.jpg`.
 
+### Hiding Categories Site-Wide (July 2026)
+
+Categories are hidden everywhere but kept in post front matter. The main
+switch is disabling the taxonomy in `config/_default/hugo.toml`:
+
+```toml
+[taxonomies]
+    tag = "tags"
+```
+
+With `categories` unregistered, Hugo generates no `/categories/` term
+pages, and `GetTerms "categories"` returns empty — which auto-hides the
+category grid on the archives page and all category links. Two companion
+edits: the `categories` widget is commented out in `params.toml`, and the
+badge guard in `layouts/_partials/article/components/details.html` uses
+`GetTerms "categories"` instead of `.Params.categories` (the front-matter
+check would render an empty `<header class="article-category">` while the
+taxonomy is off).
+
+To restore categories: add `category = "categories"` to `[taxonomies]`
+and uncomment the widget line.
+
 ## Custom CSS
 
 ### How to Override Theme Styles

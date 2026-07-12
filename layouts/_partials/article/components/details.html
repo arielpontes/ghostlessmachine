@@ -7,7 +7,9 @@
     {{- $link = $external -}}
 {{- end -}}
 <div class="article-details">
-    {{ if $Page.Params.categories }}
+    {{/* Guard on GetTerms (not .Params.categories) so nothing renders while the
+         categories taxonomy is disabled in hugo.toml. */}}
+    {{ if $Page.GetTerms "categories" }}
     <header class="article-category">
         {{ range ($Page.GetTerms "categories") }}
             {{ $color := partial "helper/color-from-str" .LinkTitle }}

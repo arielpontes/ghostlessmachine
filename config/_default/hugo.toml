@@ -8,6 +8,12 @@ theme                  = "hugo-theme-stack"
 [pagination]
     pagerSize = 10
 
+# Categories are hidden site-wide: the taxonomy is disabled here (posts keep
+# `categories` in front matter). To bring them back, add
+# `category = "categories"` below and restore the widget in params.toml.
+[taxonomies]
+    tag = "tags"
+
 [permalinks]
     post = "/p/:slug/"
     page = "/:slug/"
