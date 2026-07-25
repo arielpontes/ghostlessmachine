@@ -66,6 +66,27 @@ taxonomy is off).
 To restore categories: add `category = "categories"` to `[taxonomies]`
 and uncomment the widget line.
 
+### Homepage Intro Card (July 2026)
+
+The bio blurb above the homepage post grid lives in `content/_index.md`
+and `content/_index.pt.md` (both carry `title: Ghostless Machine` so the
+`<title>` tag and markdownlint's MD041 stay happy). The theme's
+`home.html` ignores homepage content, so the site overrides
+`layouts/home.html` to render `.Content` above the list — only when
+`$paginator.HasPrev` is false, so `/page/2/` and beyond skip it.
+
+Styling is `.homepage-intro` in `assets/scss/custom.scss`: the
+`machine-bw.jpg` background (in `static/img/`, referenced from compiled
+CSS as `url(../img/...)` relative to `/scss/`), fixed white text, and a
+black overlay whose alpha is the one knob for image darkness:
+
+```scss
+--intro-overlay: rgba(0, 0, 0, 0.55);
+```
+
+Links are forced white/underlined because the theme's accent color
+(light mode) and grey hover highlight are illegible on the dark image.
+
 ## Custom CSS
 
 ### How to Override Theme Styles
@@ -152,6 +173,17 @@ Configure in `config/_default/languages.toml`:
     languageName = "Português"
     weight = 2
 ```
+
+### Resources in Non-Default-Language Bundles
+
+In a bundle that has no default-language page (e.g. `page/sobre/` with
+only `index.pt.md`), a resource without a language suffix
+(`me-2021.jpg`) attaches to the missing EN page and the PT page can't
+see it — the theme's image hook then emits an `<img>` with no `src`.
+Fix: add the language code to the resource filename
+(`me-2021.pt.jpg`). Markdown keeps referencing the bare name
+(`![...](me-2021.jpg)`); Hugo strips the code when naming the
+resource.
 
 ## GitHub Pages Deployment
 
