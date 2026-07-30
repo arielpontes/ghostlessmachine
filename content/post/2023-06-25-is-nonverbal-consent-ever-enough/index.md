@@ -9,6 +9,8 @@ categories:
   - "Feminism"
   - "Philosophy"
   - "Society"
+tags:
+  - "Podcast"
 ---
 
 A dialogue with Kitty

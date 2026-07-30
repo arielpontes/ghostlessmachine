@@ -87,6 +87,42 @@ black overlay whose alpha is the one knob for image darkness:
 Links are forced white/underlined because the theme's accent color
 (light mode) and grey hover highlight are illegible on the dark image.
 
+### Homepage Tabs — Articles / Podcasts (July 2026)
+
+The homepage and `/podcasts/` are two separate templates styled as tabs.
+Podcast posts carry `tags: ["Podcast"]`; the homepage excludes them, the
+podcasts page (`content/page/podcasts/` + `layouts/podcasts.html`) lists
+only them (from `site.Sites.Default` so the PT page shows the EN-only
+episodes).
+
+**Custom layouts silently drop baseof blocks and shared furniture.** This
+caused two bugs in a row: `podcasts.html`, written from scratch, first
+lost the right sidebar (Stack's `baseof.html` renders
+`block "right-sidebar"` only if the layout defines it), then lost the
+homepage hero when it was later added only to `home.html`. Rules:
+
+- When adding a page meant to look like a sibling of an existing page,
+  **copy that page's template and edit it** — never write it from scratch.
+- Anything that must appear identically on sibling pages (hero, tab bar)
+  lives in one shared partial (`_partials/home-tabs.html`, which takes
+  `Active` and `ShowHero`), not duplicated per layout.
+
+**`.Paginate` is first-call-wins.** The theme's `data/title.html`
+paginates from inside `<head>`, before `main` renders, so filtering the
+page list inside `home.html` has no effect. The podcast filter therefore
+lives in the site override of `_partials/helper/paginator.html`
+(homepage only, so archives/tags/search still include podcasts).
+
+**Project `i18n/pt.toml` is shadowed** by the theme's `pt-br`/`pt-pt`
+bundles for this site's bare `pt` language — `T` falls back to English.
+The tab labels are inlined in the partial with a
+`site.Language.Lang` check instead.
+
+Two debugging gotchas from the same session: recent Hugo **strips HTML
+comments from templates** (debug with a `<span hidden>` instead), and a
+**running `hugo server` doesn't pick up a new file that shadows a theme
+partial** — restart the server after creating one.
+
 ## Custom CSS
 
 ### How to Override Theme Styles

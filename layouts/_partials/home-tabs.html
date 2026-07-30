@@ -1,0 +1,14 @@
+{{- $active := .Active -}}
+{{/* Shared header of the homepage and /podcasts/ — both tab pages must
+     render identical furniture, so it lives here, not in the layouts. */}}
+{{- if .ShowHero }}
+    <h1 class="homepage-hero">GHOSTLESS MACHINE</h1>
+{{- end }}
+{{/* Labels are inlined instead of using i18n: the theme ships pt-br/pt-pt
+     bundles that shadow a project-level pt.toml for this site's "pt" lang. */}}
+<nav class="home-tabs">
+    <a href="{{ site.Home.RelPermalink }}"{{ if eq $active "articles" }} class="active"{{ end }}>{{ if eq site.Language.Lang "pt" }}Artigos{{ else }}Articles{{ end }}</a>
+    {{ with site.GetPage "/page/podcasts" }}
+        <a href="{{ .RelPermalink }}"{{ if eq $active "podcasts" }} class="active"{{ end }}>Podcasts</a>
+    {{ end }}
+</nav>

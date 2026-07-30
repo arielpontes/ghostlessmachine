@@ -1,0 +1,19 @@
+{{ define "body-class" }}template-podcasts{{ end }}
+{{ define "main" }}
+    {{- partial "home-tabs.html" (dict "Active" "podcasts" "ShowHero" true) -}}
+
+    {{/* Podcasts are English-only bundles; list them from the default-
+         language site so the Portuguese page shows the same episodes. */}}
+    {{- $podcasts := where site.Sites.Default.RegularPages "Params.tags" "intersect" (slice "Podcast") -}}
+    <section class="article-list">
+        {{ range $podcasts }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

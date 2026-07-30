@@ -1,0 +1,15 @@
+{{- $result := slice -}}
+
+{{- if or .IsHome (eq .Kind "section") (eq .Kind "taxonomy") (eq .Kind "term") -}}
+    {{- $pages := partial "helper/pages.html" . -}}
+    {{/* The homepage "Articles" tab excludes podcast posts; they get their
+         own /podcasts/ page. The filter lives here (not in home.html)
+         because data/title.html paginates from <head> before main renders,
+         and .Paginate only takes effect on its first call. */}}
+    {{- if .IsHome -}}
+        {{- $pages = $pages | complement (where $pages "Params.tags" "intersect" (slice "Podcast")) -}}
+    {{- end -}}
+    {{- $result = .Paginate $pages -}}
+{{- end -}}
+
+{{- return $result -}}

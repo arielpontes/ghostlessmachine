@@ -1,13 +1,7 @@
 {{ define "main" }}
     {{- $paginator := partial "helper/paginator.html" . -}}
 
-    {{- if not $paginator.HasPrev }}
-        {{- with .Content }}
-            <section class="homepage-intro">
-                {{ . }}
-            </section>
-        {{- end }}
-    {{- end }}
+    {{- partial "home-tabs.html" (dict "Active" "articles" "ShowHero" (not $paginator.HasPrev)) -}}
 
     <section class="article-list">
         {{ range $index, $element := $paginator.Pages }}

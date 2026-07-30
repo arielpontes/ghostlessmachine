@@ -6,6 +6,8 @@ redirect_url: "https://youtu.be/mBV73LXX5QY"
 image: "thumb.png"
 categories:
   - "Philosophy"
+tags:
+  - "Podcast"
 ---
 
 A dialogue with Ștefan Mironescu

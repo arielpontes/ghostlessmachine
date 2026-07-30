@@ -9,6 +9,8 @@ categories:
   - "Ethics"
   - "Philosophy"
   - "Rationalism"
+tags:
+  - "Podcast"
 ---
 
 A dialogue with Jamie Woodhouse

@@ -8,6 +8,8 @@ categories:
   - "Atheism"
   - "Philosophy"
   - "Rationalism"
+tags:
+  - "Podcast"
 ---
 
 A dialogue with Adrian Cotora

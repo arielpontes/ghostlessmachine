@@ -51,38 +51,36 @@
     }
 }
 
-// Intro card above the homepage post grid (content in content/_index*.md).
-// The background image is dark in both color schemes, so text is fixed white
-// and links can't use the theme's accent/highlight (illegible in light mode).
-.homepage-intro {
+// Homepage hero card (home-tabs.html partial, shown on the homepage and
+// /podcasts/): the machine-bw.jpg background behind the site title in a
+// robotic monospace font (loaded via the custom-font.html head override).
+// Light mode fades the image toward white under black text; dark mode
+// dims it toward black under white text. The overlay alpha is the one
+// knob for how faded the image looks.
+.homepage-hero {
     @include card-style;
     padding: var(--card-padding);
-    // Black overlay on top of the image for text legibility;
-    // raise/lower the alpha to make the card darker/brighter.
-    --intro-overlay: rgba(0, 0, 0, 0.55);
+    --intro-overlay: rgba(255, 255, 255, 0.5);
+    --hero-text: #000;
+    --hero-shadow: rgba(255, 255, 255, 0.8);
+
+    [data-scheme="dark"] & {
+        --intro-overlay: rgba(0, 0, 0, 0.5);
+        --hero-text: #fff;
+        --hero-shadow: rgba(0, 0, 0, 0.8);
+    }
 
     background:
         linear-gradient(var(--intro-overlay), var(--intro-overlay)),
         #000 url(../img/machine-bw.jpg) center / cover no-repeat;
-    color: #fff;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-    font-size: 1.6rem;
-    line-height: 1.6;
-
-    p {
-        margin: 0;
-    }
-
-    a,
-    a:hover {
-        color: #fff;
-    }
-
-    a.link,
-    a.link:hover {
-        box-shadow: none;
-        text-decoration: underline;
-    }
+    margin: 0;
+    text-align: center;
+    color: var(--hero-text);
+    text-shadow: 0 1px 3px var(--hero-shadow);
+    font-family: "Share Tech Mono", var(--code-font-family);
+    font-weight: 400; // Share Tech Mono only ships a regular weight
+    font-size: clamp(3.2rem, 6vw, 6.4rem);
+    letter-spacing: 0.08em;
 }
 
 // The Instagram-style bio makes the left sidebar taller than the viewport,
@@ -117,6 +115,28 @@
     // preserve its line breaks, which HTML would otherwise collapse.
     .site-description {
         white-space: pre-line;
+    }
+}
+
+// "Articles / Podcasts" tabs above the homepage and /podcasts/ post grids
+.home-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    a {
+        padding: 8px 16px;
+        border-radius: var(--tag-border-radius);
+        background: var(--card-background);
+        box-shadow: var(--shadow-l1);
+        color: var(--card-text-color-main);
+        font-size: 1.4rem;
+        font-weight: 600;
+
+        &.active {
+            background: var(--accent-color);
+            color: var(--accent-color-text);
+        }
     }
 }
 
