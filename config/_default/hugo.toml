@@ -6,7 +6,7 @@ hasCJKLanguage         = false
 theme                  = "hugo-theme-stack"
 
 [pagination]
-    pagerSize = 10
+    pagerSize = 9
 
 # Categories are hidden site-wide: the taxonomy is disabled here (posts keep
 # `categories` in front matter). To bring them back, add
