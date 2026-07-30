@@ -19,7 +19,7 @@ As my epistemic and moral values started taking shape, I started to get increasi
 Nobody likes to be lied to. Nobody likes to be cheated on or treated unfairly. Nobody likes to suffer or experience unnecessary discomfort. If I expect to be treated with respect and dignity, I should also treat others with respect and dignity. This is the Golden Rule: treat others as you’d want to be treated. It’s found under one form or another in almost all cultures. It is basically the Copernican principle applied to ethics. In the words of Henry Sidgwick:
 
 > [T]he good of any one person is no more important from the point of view… of the universe than the good of any other;
-> 
+>
 > – Sidgwick, 1901
 
 This chain of reasoning soon led to the conclusion, therefore, that making the world a better place essentially means minimizing the amount of unnecessary suffering in the world. Some may criticize this view as simplistic or “utilitarian”. I don’t necessarily reject the label of “utilitarian”, and I’ve written a series of articles refuting arguments against utilitarianism and consequentialism more broadly. However, you don’t have to be a utilitarian to agree with me. You just have to agree, as virtually everybody does, that minimizing suffering is one of the things that matters most when talking about ethics, even if it’s not the only one.
@@ -62,7 +62,7 @@ But does that mean we should give up on studying policy altogether? Of course no
 To use Karl Popper’s terminology, we should strive for an open society: one where our assumptions are always open to revision and our institutions always open to change:
 
 > Aestheticism and radicalism must lead us to jettison reason, and to replace it by a desperate hope for political miracles. This irrational attitude which springs from intoxication with dreams of a beautiful world is what I call Romanticism. It may seek its heavenly city in the past or in the future; it may preach ‘back to nature’ or ‘forward to a world of love and beauty’; but its appeal is always to our emotions rather than to reason. Even with the best intentions of making heaven on earth it only succeeds in making it a hell — that hell which man alone prepares for his fellow-men.
-> 
+>
 > – Karl Popper, The Open Society and its Enemies
 
 That’s why Popper defends “piecemeal” rather than “utopian” social engineering. Utopianism is simply so risky that it amounts to gambling with the future of humankind. Some may accuse Popper of being a “conservative” or “reformist”, but using these terms as insults is uncharitable. There is a spectrum between conservative or reformist on the one hand, and progressivist or revolutionary on the other. We all fall on different points in this spectrum depending on the issue under discussion. As Aristotle reminds us, virtue is the golden mean between two vices. We can debate the merits of conservatism and progressivism all day, but it shouldn’t be hard to agree that, as much as excessive stagnation can be a problem, too much change too fast can also have its social costs. And to be clear, I’m talking about the kind of Hobbesian/Burkean conservatism that prioritizes stability and the preservation of institutions in order to prevent bloodshed, not the kind of religious conservatism that focuses on controlling individual behavior.
@@ -78,9 +78,9 @@ So if you also have scientific and utilitarian tendencies, which of the existing
 There are a few aspects to neoliberalism that are worth noting because they make it fundamentally incompatible with science:
 
 1. It presents itself as [apolitical and technocratic](https://www.policyalternatives.ca/news-research/after-neoliberalism-a-progressive-globalization/), even though it never reflected academic consensus.
-2. Thanks in part to this ingenious framing, it succeeded in influencing policy across the political spectrum after the end of the cold war, shifting the political discourse towards culture wars instead of class struggle.
-3. Its network of conservative and right-libertarian organizations, political parties, and think tanks, are very well funded by billionaires and oligarchs from all over the world, but particularly the US.
-4. It’s based on an unscientific and outdated approach to economics that disregards evidence in favor of a priori reasoning and unfalsifiable models.
-5. Its policy proposals have been proven not to work by modern evidence-based research.
+2. Thanks in part to this ingenious framing, it succeeded in [influencing policy across the political spectrum](https://www.thenation.com/article/politics/third-way-dlc-bill-clinton-tony-blair-1990s-politics/) after the end of the cold war, shifting the political discourse towards [culture wars instead of class struggle](https://www.dissentmagazine.org/online_articles/progressive-neoliberalism-reactionary-populism-nancy-fraser/).
+3. Its network of conservative and right-libertarian organizations, political parties, and think tanks, are [very well funded by billionaires and oligarchs](https://newrepublic.com/article/175488/atlas-shadowy-global-network-right-wing-think-tanks) from all over the world, but particularly the US.
+4. It’s based on an [unscientific and outdated approach to economics](https://www.theguardian.com/news/2017/jul/11/how-economics-became-a-religion) that disregards evidence in favor of a priori reasoning and unfalsifiable models.
+5. Key parts of its agenda have been [shown by modern evidence-based research to deliver little growth while increasing inequality](https://www.imf.org/external/pubs/ft/fandd/2016/06/ostry.htm).
 
-A.
+To be clear: this is not to say there is absolutely nothing to salvage from neoliberal ideology. The era of trade liberalization saw [hundreds of millions of people lifted out of extreme poverty](https://ourworldindata.org/data-insights/was-the-global-decline-of-extreme-poverty-only-due-to-china), stabilization plans like Brazil’s Plano Real [ended the hyperinflation that was destroying workers’ purchasing power](https://library.brown.edu/create/fivecenturiesofchange/chapters/chapter-8/cardoso/), and the opening of telecom markets enabled innovations like [mobile banking, which has measurably reduced poverty in Kenya](https://news.mit.edu/2016/mobile-money-kenyans-out-poverty-1208).
