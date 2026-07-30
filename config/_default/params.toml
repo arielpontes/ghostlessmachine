@@ -2,8 +2,18 @@ mainSections   = ["post"]
 rssFullContent = true
 
 [sidebar]
-    subtitle = "Overcoming political polarization with philosophy"
+    subtitle = """
+📖 Philosophy 🔭 Science ⚛️ Secular Humanism 💡Suffering-Focused Ethics ✊ Social Anarchism
+
+💪 Founder at <a href="https://humanistas.ong.br/">Humanists Brazil</a> and <a href="http://linktr.ee/earomania">Effective Altruism Romania</a>
+✋ Volunteer at <a href="https://asur.ro/">ASUR</a> and <a href="http://linktr.ee/diem25.ro">DiEM25 Romania</a>
+
+🇧🇷 Born in Rio
+🇷🇴 Based in Bucharest"""
     avatar   = "img/avatar.jpg"
+
+[colorScheme]
+    toggle = true
 
 [article]
     [article.license]
