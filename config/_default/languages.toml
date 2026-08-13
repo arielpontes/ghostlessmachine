@@ -11,6 +11,73 @@
         [en.menu.main.params]
             icon = "home"
 
+    # Social links rendered in the left sidebar (partials/sidebar/left.html).
+    # Icons live in assets/icons/ (Tabler "brand-*" outline icons).
+    # Mirrored under [pt] below — keep both lists in sync.
+
+    [[en.menu.social]]
+        identifier = "facebook"
+        name       = "Facebook"
+        url        = "https://www.facebook.com/ghostlessmachineblog"
+        weight     = 1
+        [en.menu.social.params]
+            icon   = "brand-facebook"
+            newTab = true
+
+    [[en.menu.social]]
+        identifier = "instagram"
+        name       = "Instagram"
+        url        = "https://www.instagram.com/arielpontes/"
+        weight     = 2
+        [en.menu.social.params]
+            icon   = "brand-instagram"
+            newTab = true
+
+    [[en.menu.social]]
+        identifier = "twitter"
+        name       = "Twitter"
+        url        = "https://twitter.com/arielpontes"
+        weight     = 3
+        [en.menu.social.params]
+            icon   = "brand-twitter"
+            newTab = true
+
+    [[en.menu.social]]
+        identifier = "medium"
+        name       = "Medium"
+        url        = "https://medium.com/@arielpontes"
+        weight     = 4
+        [en.menu.social.params]
+            icon   = "brand-medium"
+            newTab = true
+
+    [[en.menu.social]]
+        identifier = "youtube"
+        name       = "YouTube"
+        url        = "https://www.youtube.com/@ghostless.machine"
+        weight     = 5
+        [en.menu.social.params]
+            icon   = "brand-youtube"
+            newTab = true
+
+    [[en.menu.social]]
+        identifier = "bluesky"
+        name       = "Bluesky"
+        url        = "https://bsky.app/profile/arielpontes.bsky.social"
+        weight     = 6
+        [en.menu.social.params]
+            icon   = "brand-bluesky"
+            newTab = true
+
+    [[en.menu.social]]
+        identifier = "mastodon"
+        name       = "Mastodon"
+        url        = "https://mastodon.social/@arielpontes"
+        weight     = 7
+        [en.menu.social.params]
+            icon   = "brand-mastodon"
+            newTab = true
+
 [pt]
     languageName = "Português"
     title        = "Ghostless Machine"
@@ -23,3 +90,66 @@
         weight     = -100
         [pt.menu.main.params]
             icon = "home"
+
+    [[pt.menu.social]]
+        identifier = "facebook"
+        name       = "Facebook"
+        url        = "https://www.facebook.com/ghostlessmachineblog"
+        weight     = 1
+        [pt.menu.social.params]
+            icon   = "brand-facebook"
+            newTab = true
+
+    [[pt.menu.social]]
+        identifier = "instagram"
+        name       = "Instagram"
+        url        = "https://www.instagram.com/arielpontes/"
+        weight     = 2
+        [pt.menu.social.params]
+            icon   = "brand-instagram"
+            newTab = true
+
+    [[pt.menu.social]]
+        identifier = "twitter"
+        name       = "Twitter"
+        url        = "https://twitter.com/arielpontes"
+        weight     = 3
+        [pt.menu.social.params]
+            icon   = "brand-twitter"
+            newTab = true
+
+    [[pt.menu.social]]
+        identifier = "medium"
+        name       = "Medium"
+        url        = "https://medium.com/@arielpontes"
+        weight     = 4
+        [pt.menu.social.params]
+            icon   = "brand-medium"
+            newTab = true
+
+    [[pt.menu.social]]
+        identifier = "youtube"
+        name       = "YouTube"
+        url        = "https://www.youtube.com/@ghostless.machine"
+        weight     = 5
+        [pt.menu.social.params]
+            icon   = "brand-youtube"
+            newTab = true
+
+    [[pt.menu.social]]
+        identifier = "bluesky"
+        name       = "Bluesky"
+        url        = "https://bsky.app/profile/arielpontes.bsky.social"
+        weight     = 6
+        [pt.menu.social.params]
+            icon   = "brand-bluesky"
+            newTab = true
+
+    [[pt.menu.social]]
+        identifier = "mastodon"
+        name       = "Mastodon"
+        url        = "https://mastodon.social/@arielpontes"
+        weight     = 7
+        [pt.menu.social.params]
+            icon   = "brand-mastodon"
+            newTab = true
