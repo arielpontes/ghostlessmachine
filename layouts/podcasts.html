@@ -2,6 +2,18 @@
 {{ define "main" }}
     {{- partial "home-tabs.html" (dict "Active" "podcasts" "ShowHero" true) -}}
 
+    {{/* The podcast's canonical homes, ordered by platform popularity; the
+         RSS feed covers every other app. Labels are inlined for the same
+         reason as in home-tabs.html. */}}
+    <nav class="podcast-platforms">
+        <span>{{ if eq site.Language.Lang "pt" }}Disponível em{{ else }}Listen on{{ end }}:</span>
+        <a href="https://www.youtube.com/@ghostless.machine/podcasts" target="_blank">{{ partial "helper/icon" "brand-youtube" }}YouTube</a>
+        <a href="https://open.spotify.com/show/07rTfXrY4yu5Jx2djPU7mw" target="_blank">{{ partial "helper/icon" "brand-spotify" }}Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/ghostless-machine/id1533152089" target="_blank">{{ partial "helper/icon" "brand-apple-podcast" }}Apple Podcasts</a>
+        <a href="https://pocketcasts.com/podcast/ghostless-machine/dbe38cb0-e00e-0138-e7bb-0acc26574db2" target="_blank">{{ partial "helper/icon" "pocketcasts" }}Pocket Casts</a>
+        <a href="https://anchor.fm/s/21b14718/podcast/rss" target="_blank">{{ partial "helper/icon" "rss" }}RSS</a>
+    </nav>
+
     {{/* Podcasts are English-only bundles; list them from the default-
          language site so the Portuguese page shows the same episodes. */}}
     {{- $podcasts := where site.Sites.Default.RegularPages "Params.tags" "intersect" (slice "Podcast") -}}
@@ -10,6 +22,59 @@
             {{ partial "article-list/default" . }}
         {{ end }}
     </section>
+
+    {{/* Episode cards link out to redirect_url (YouTube). For episodes with a
+         `podcast` front matter map, that click instead opens a dialog offering
+         the episode on each platform; the map below is keyed by the card's
+         outgoing URL so the script can match clicked links to episodes. */}}
+    {{ $episodes := dict }}
+    {{ range $podcasts }}
+        {{ if and .Params.podcast .Params.redirect_url }}
+            {{ $episodes = merge $episodes (dict .Params.redirect_url (merge .Params.podcast (dict "title" .Title))) }}
+        {{ end }}
+    {{ end }}
+    <script type="application/json" id="episode-links">{{ $episodes | jsonify | safeJS }}</script>
+
+    <dialog id="episode-dialog">
+        <button type="button" class="dialog-close" aria-label="{{ if eq site.Language.Lang "pt" }}Fechar{{ else }}Close{{ end }}">✕</button>
+        <h2></h2>
+        <nav class="podcast-platforms">
+            <span>{{ if eq site.Language.Lang "pt" }}Disponível em{{ else }}Listen on{{ end }}:</span>
+            <a data-platform="youtube" target="_blank">{{ partial "helper/icon" "brand-youtube" }}YouTube</a>
+            <a data-platform="spotify" target="_blank">{{ partial "helper/icon" "brand-spotify" }}Spotify</a>
+            <a data-platform="apple" target="_blank">{{ partial "helper/icon" "brand-apple-podcast" }}Apple Podcasts</a>
+            <a data-platform="pocketcasts" target="_blank">{{ partial "helper/icon" "pocketcasts" }}Pocket Casts</a>
+        </nav>
+    </dialog>
+
+    <script>
+        (function () {
+            var episodes = JSON.parse(document.getElementById('episode-links').textContent);
+            var dialog = document.getElementById('episode-dialog');
+            var title = dialog.querySelector('h2');
+
+            document.querySelectorAll('.article-list a[href]').forEach(function (card) {
+                var episode = episodes[card.href];
+                if (!episode) return;
+                card.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    title.textContent = episode.title;
+                    dialog.querySelectorAll('a[data-platform]').forEach(function (link) {
+                        link.href = episode[link.dataset.platform] || '';
+                        link.hidden = !episode[link.dataset.platform];
+                    });
+                    dialog.showModal();
+                });
+            });
+
+            dialog.querySelector('.dialog-close').addEventListener('click', function () {
+                dialog.close();
+            });
+            dialog.addEventListener('click', function (event) {
+                if (event.target === dialog) dialog.close();
+            });
+        })();
+    </script>
 
     {{- partial "footer/footer" . -}}
 {{ end }}

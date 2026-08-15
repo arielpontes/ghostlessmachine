@@ -140,6 +140,68 @@
     }
 }
 
+// "Listen on: …" platform links under the tabs on the /podcasts/ page
+.podcast-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.4rem;
+    color: var(--card-text-color-secondary);
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 12px;
+        border-radius: var(--tag-border-radius);
+        background: var(--card-background);
+        box-shadow: var(--shadow-l1);
+        color: var(--card-text-color-main);
+        font-weight: 600;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+// Per-episode platform chooser dialog on the /podcasts/ page
+#episode-dialog {
+    border: none;
+    border-radius: var(--card-border-radius);
+    background: var(--card-background);
+    color: var(--card-text-color-main);
+    box-shadow: var(--shadow-l2);
+    padding: var(--card-padding);
+    width: 48rem;
+    max-width: 90vw;
+
+    &::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    h2 {
+        margin: 0 0 20px;
+        font-size: 1.8rem;
+        text-align: center;
+        padding: 0 24px;
+    }
+
+    .dialog-close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 1.6rem;
+        color: var(--card-text-color-secondary);
+    }
+}
+
 // Narrow the right sidebar (theme default: 30% / 25%) to give the post grid more room
 .container.extended {
     @include respond(lg) {
