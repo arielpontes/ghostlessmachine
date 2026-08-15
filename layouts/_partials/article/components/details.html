@@ -44,21 +44,30 @@
 
     {{ if or $showTime $showTranslations $showTags }}
     <footer class="article-meta">
-        {{ if $showTime }}
+        {{- /* Site override: date and reading time/duration get one
+               .inline-meta each. The theme puts both in a single wrapping
+               row, which can break between an icon and its text; separate
+               rows in the column-flex .article-meta always line-break
+               cleanly between the two. */ -}}
+        {{ if $showDate }}
             <div class="inline-meta">
-                {{ if $showDate }}
-                    {{ partial "helper/icon" "date" }}
-                    <time class="article-time--published" datetime='{{ $Page.Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-                        {{- $Page.Date | time.Format $Page.Site.Params.dateFormat.published -}}
-                    </time>
-                {{ end }}
+                {{ partial "helper/icon" "date" }}
+                <time class="article-time--published" datetime='{{ $Page.Date.Format "2006-01-02T15:04:05Z07:00" }}'>
+                    {{- $Page.Date | time.Format $Page.Site.Params.dateFormat.published -}}
+                </time>
+            </div>
+        {{ end }}
 
-                {{ if $showReadingTime }}
-                    {{ partial "helper/icon" "clock" }}
-                    <time class="article-time--reading">
-                        {{ T "article.readingTime" $Page.ReadingTime }}
-                    </time>
-                {{ end }}
+        {{- /* Site override: podcast posts show the episode duration
+               (podcast.duration in frontmatter) instead of reading time. */ -}}
+        {{ $duration := "" }}
+        {{ with $Page.Params.podcast }}{{ $duration = .duration | default "" }}{{ end }}
+        {{ if or $duration $showReadingTime }}
+            <div class="inline-meta">
+                {{ partial "helper/icon" "clock" }}
+                <time class="article-time--reading">
+                    {{ if $duration }}{{ $duration }}{{ else }}{{ T "article.readingTime" $Page.ReadingTime }}{{ end }}
+                </time>
             </div>
         {{ end }}
 
