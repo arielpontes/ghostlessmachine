@@ -24,6 +24,13 @@
                 )
             ) }}
         </a>
+        {{- /* Site override: Medium-style caption under the featured image,
+             from the image_caption front matter field (markdown, e.g. a
+             description or a "Source: ..." link). Single pages only — list
+             thumbnails stay clean. */ -}}
+        {{ if and (not $IsList) $Page.Params.image_caption }}
+        <div class="article-image-caption">{{ $Page.Params.image_caption | markdownify }}</div>
+        {{ end }}
     </div>
     {{ end }}
 

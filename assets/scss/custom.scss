@@ -202,6 +202,15 @@
     }
 }
 
+// Caption under the featured image on post pages, rendered by the
+// article header partial override from the image_caption front matter field.
+.article-image-caption {
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--card-text-color-secondary);
+    padding: 12px var(--card-padding) 0;
+}
+
 // Narrow the right sidebar (theme default: 30% / 25%) to give the post grid more room
 .container.extended {
     @include respond(lg) {
