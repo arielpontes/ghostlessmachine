@@ -3,6 +3,13 @@
 A bilingual (English/Portuguese) Hugo site migrated from WordPress, using the
 [hugo-theme-stack](https://github.com/CaiJimmy/hugo-theme-stack).
 
+## Article writing style
+
+Articles present Ariel's original ideas and arguments, but they should also
+be educational and informative without being too technical. When editing or
+reviewing article drafts, favor adding references to specific events,
+historical dates, and important individuals, and flag imprecise claims.
+
 ## Python scripts
 
 Python dependencies are managed with [uv](https://docs.astral.sh/uv/)
