@@ -17,11 +17,66 @@ claims in a piece of writing.
 1. Prefer lay articles from credible sources: mainstream news
    organizations, university blogs and press releases, reputable
    magazines, book summaries or reviews.
-2. Fall back to proper academic articles (journal papers, working
-   papers) only when no good lay article covers the claim.
-3. Always open each candidate source (WebFetch, or curl if blocked) and
+2. Books are also acceptable when a book is the best authority for the
+   claim (e.g. the claim is about an author's argument). Cite them
+   using the formats in "Citing books" below.
+3. Fall back to proper academic articles (journal papers, working
+   papers) only when no good lay article or book covers the claim.
+4. Always open each candidate source (WebFetch, or curl if blocked) and
    confirm it actually supports the specific claim as written. Never
-   cite based on search-result snippets alone.
+   cite based on search-result snippets alone. For a book, verify
+   through what is accessible — excerpts, quote pages, reviews,
+   publisher summaries — and lower the source confidence if the
+   supporting passage itself couldn't be read.
+
+## Prioritizing familiar sources
+
+The author's Goodreads shelves list the books he has read or is
+reading. Fetch both shelves at the start of source selection:
+
+```bash
+uv run scripts/goodreads_shelves.py
+```
+
+It prints one `author<TAB>title` line per book under `# currently-reading`
+and `# read` headers — never fetch the Goodreads RSS directly, the raw
+XML wastes tokens.
+
+Use the shelves as a preference order when several sources could
+support a claim:
+
+1. A book on the shelves.
+2. A work by an author who appears on the shelves.
+3. An article or study cited inside a book on the shelves, when you
+   know of one.
+4. Anything else, per the source-selection rules above.
+
+This is a tie-breaker, not a filter: a familiar source must still pass
+the verification rule above (confirm it supports the specific claim as
+written), and an unfamiliar source that supports the claim beats a
+familiar one that doesn't.
+
+## Citing books
+
+House style — use these formats and no others:
+
+- Book titles are always in italics, never in quotation marks
+  (quotation marks are for shorter works: articles, chapters, songs).
+- Link target: a page containing the relevant passage if one exists;
+  otherwise the book's Goodreads page.
+- Inline mention: casual, with the title as an italicized link —
+  `As Chomsky argues in [*On Anarchism*](url), …`. No author-date
+  parentheticals like "(Chomsky, 2005)" — the blog has no reference
+  list for a year to resolve against. Mention the year in prose only
+  when the date matters to the argument.
+- Direct quote: markdown blockquote, attribution on its own line
+  inside the blockquote — `— Author Fullname, [*Title*](url)` — with
+  an em dash. Append the year in parentheses after the title only when
+  the work's age is part of the point (e.g. quoting Sidgwick).
+- When the draft already cites a book in another style (author-date,
+  plain-text title, en-dash attribution), normalizing it to these
+  formats is an allowed edit, as an exception to the
+  wrap-existing-words-only rule below.
 
 ## Editing the text
 
