@@ -83,9 +83,16 @@ the choices below are findings, never the choices themselves:
 - Book titles in italics; quotation marks for shorter works (articles,
   chapters, songs).
 - Citations and blockquote attributions follow the formats in the
-  `provide-sources` skill ("Citing books"); flag any other style
-  (author-date parentheticals, plain-text titles, en-dash
-  attributions) as inconsistent.
+  `provide-sources` skill ("Citing books and quotes"); flag any other
+  style (author-date parentheticals, plain-text book titles, en-dash
+  attributions, attributions missing the year or the `>` separator
+  line, trailing source parentheticals like "([Wikipedia](url))") as
+  inconsistent. Two non-findings: a quote whose lead-in sentence names
+  the source correctly has no attribution line, and an attribution for
+  a continuously edited source (e.g. Wikipedia) correctly has no year.
+- A verbatim quote from a living document (e.g. Wikipedia) must link a
+  permanent snapshot of the quoted revision (for Wikipedia, the
+  `oldid` URL), not the live page; flag live links under quotes.
 - Em dashes only in blockquote attributions; in prose prefer commas,
   periods, or parentheses.
 

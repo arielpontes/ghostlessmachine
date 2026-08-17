@@ -56,7 +56,7 @@ the verification rule above (confirm it supports the specific claim as
 written), and an unfamiliar source that supports the claim beats a
 familiar one that doesn't.
 
-## Citing books
+## Citing books and quotes
 
 House style — use these formats and no others:
 
@@ -69,14 +69,50 @@ House style — use these formats and no others:
   parentheticals like "(Chomsky, 2005)" — the blog has no reference
   list for a year to resolve against. Mention the year in prose only
   when the date matters to the argument.
-- Direct quote: markdown blockquote, attribution on its own line
-  inside the blockquote — `— Author Fullname, [*Title*](url)` — with
-  an em dash. Append the year in parentheses after the title only when
-  the work's age is part of the point (e.g. quoting Sidgwick).
-- When the draft already cites a book in another style (author-date,
-  plain-text title, en-dash attribution), normalizing it to these
-  formats is an allowed edit, as an exception to the
-  wrap-existing-words-only rule below.
+- Direct quote: markdown blockquote with the attribution as its own
+  paragraph inside the blockquote (a lone `>` line separates it from
+  the quote text), in the format `— Author Fullname, [Source](url),
+  year`, with an em dash. The source is whatever the words originally
+  appeared in: an italicized book title, a plain-text publication name
+  (`[New York Post](url)`), or a short description (`[interview with
+  Harry Kreisler](url)`). The year is always included, and it is the
+  year of original publication or utterance — an interview's year, not
+  the year of a book that later reprinted it.
+- Quoted text must be verbatim. Check the exact wording against the
+  source; if the draft paraphrases inside quotation marks or a
+  blockquote, correct it to the original wording and flag the change
+  in the response.
+- A quotation inside a running sentence (e.g. a quoted definition)
+  takes the link on the term or phrase being discussed — never a
+  trailing parenthetical like `([Wikipedia](url))`.
+- A blockquote introduced by a lead-in sentence that names the source
+  ("According to Wikipedia:") takes the link on the source name in the
+  lead-in and no attribution line — attribution lines are for quotes
+  that stand on their own.
+- Authorless collective sources (Wikipedia and the like) put the
+  publication in the author slot and the article title, in quotation
+  marks, in the source slot: `— Wikipedia, ["Neoliberalism"](url)`.
+  Omit the year: a continuously edited source has no year of original
+  utterance.
+- When quoting a living document verbatim, link a permanent snapshot
+  of the revision the quote was checked against — for Wikipedia, the
+  "Permanent link" (`oldid`) URL — so the linked text keeps matching
+  the quote. Live URLs remain the right target for reference links
+  that don't quote the page. For Wikipedia, get the permalink and
+  verify the quote in one step — never call the API by hand:
+
+  ```bash
+  uv run scripts/wiki_snapshot.py "Article title" --quote "quoted text"
+  ```
+
+  It prints the revision's permalink URL and `quote: OK` when the
+  quote is verbatim in that revision; on `NOT FOUND` it prints the
+  closest matching passage so the drift can be fixed. Bracketed
+  alterations ("[It]", "[…]") in the quote are skipped automatically.
+- When the draft already cites a source in another style (author-date,
+  plain-text book title, en-dash attribution, missing year, missing
+  `>` separator line), normalizing it to these formats is an allowed
+  edit, as an exception to the wrap-existing-words-only rule below.
 
 ## Editing the text
 
