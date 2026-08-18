@@ -29,6 +29,45 @@ claims in a piece of writing.
    publisher summaries — and lower the source confidence if the
    supporting passage itself couldn't be read.
 
+## Link to the passage, not the page
+
+A source link's job is to let the reader verify the specific claim.
+Linking a long page bare (an encyclopedia entry, a book commentary, a
+full-text chapter) fails at that job even when the support is in there
+somewhere — the reader can't find it. Whenever the supporting material
+is one passage of a longer page, deep-link the passage with a
+scroll-to-text fragment (`#:~:text=…`), generated and verified in one
+step — never hand-build the fragment, the encoding rules are fiddly:
+
+```bash
+uv run scripts/text_fragment.py <url> "verbatim passage" ["second passage" …]
+```
+
+The script fetches the page, confirms each passage occurs in its
+visible text (recovering the page's exact smart punctuation if the
+input differs only in quotes/dashes), and prints the ready-to-paste
+URL. Long passages are automatically shortened to a `start,end` range.
+Supporting browsers (all major ones since 2024) scroll to and
+highlight the passage; older ones just open the page, so the fragment
+never hurts.
+
+- Pick the shortest passage that states the cited point; pass several
+  passages when the claim has several parts.
+- The fragment earns its place only when the reader would otherwise
+  have to hunt for the passage. Skip it when the support is already
+  the first thing a visitor sees: if the highlight would land in the
+  headline or subhead, it is by definition unnecessary, and the same
+  goes for a page's opening sentences (e.g. an encyclopedia entry's
+  lead definition).
+- Also skip it when the whole page is the referent: a short lay
+  article a quick skim of which visibly confirms the point, a
+  definitional link to a concept, a Goodreads quote page.
+- If the script can't find the passage (client-rendered page) or the
+  site defeats fragments (`Document-Policy: force-load-at-top`),
+  prefer a shorter page that makes the same point; as a last resort,
+  quote the passage in the article itself as a blockquote with
+  attribution and link the page bare.
+
 ## Prioritizing familiar sources
 
 The author's Goodreads shelves list the books he has read or is
@@ -118,6 +157,15 @@ House style — use these formats and no others:
 
 - Insert each source as an inline markdown link on the most relevant
   existing phrase — never as footnotes or a references section.
+- A reference link (a concept or definition link, as opposed to a
+  passage citation) belongs on the term's first mention in the
+  article, once. Working on one section is no excuse to skip this
+  check — it needs two cheap greps of the full file, not a read:
+  grep for a distinctive part of the URL (already linked anywhere →
+  don't link again) and for the term itself (an earlier unlinked
+  mention → put the link there instead of in the working section).
+  Passage citations are exempt: linking different passages of the
+  same page in support of different claims is fine.
 - The only change to the text is wrapping existing words in links. Do
   not reword claims, and do not add commentary, confidence levels, or
   caveats to the text itself.
