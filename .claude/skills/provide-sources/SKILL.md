@@ -157,6 +157,13 @@ House style — use these formats and no others:
 
 - Insert each source as an inline markdown link on the most relevant
   existing phrase — never as footnotes or a references section.
+- Keep link text short: roughly two to five words. Wrap only the core
+  of the claim — the key statistic or verb phrase — never the whole
+  clause. Write "publicly traded US companies with employee ownership
+  [are about 20% more likely](…) than comparable firms to survive"
+  rather than wrapping all 21 words in one link. The URL's text
+  fragment, not a long anchor, is what points the reader to the
+  supporting passage.
 - A reference link (a concept or definition link, as opposed to a
   passage citation) belongs on the term's first mention in the
   article, once. Working on one section is no excuse to skip this
@@ -188,6 +195,16 @@ separate confidence levels:
 - **Source confidence** — high / medium / low confidence that the
   chosen source actually corroborates the claim as written, noting any
   gap between what the claim says and what the source shows.
+
+Young or sparse research is not the same as a weak claim. The author
+deliberately makes cutting-edge arguments that lean on immature
+fields, and mature literature cannot be expected to exist for them.
+Don't water such a claim down, refuse to source it, or pad the text
+with hedges; instead, cite the best available evidence at face value,
+have the text acknowledge plainly (once) that the research is young,
+and reserve the detailed maturity assessment for the chat response —
+where field immaturity is reported as a fact about the field, not
+counted as a strike against the claim.
 
 Before calling a claim a stretch, parse its actual scope carefully. A
 qualifying clause often already restricts the claim to something
