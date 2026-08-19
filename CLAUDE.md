@@ -10,6 +10,11 @@ be educational and informative without being too technical. When editing or
 reviewing article drafts, favor adding references to specific events,
 historical dates, and important individuals, and flag imprecise claims.
 
+Two recurring pitfalls to check in every draft: an undefined audience
+(passages addressing different camps without signaling the turn) and an
+undefined goal (a conclusion that improvises a thesis never set up
+earlier). The `draft-review` skill has the full checks.
+
 ## Python scripts
 
 Python dependencies are managed with [uv](https://docs.astral.sh/uv/)

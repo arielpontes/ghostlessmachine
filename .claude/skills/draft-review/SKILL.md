@@ -67,6 +67,24 @@ and is never a finding by itself.
   more than one thesis competing for the essay.
 - **Rapoport/Dennett** (Intuition Pumps): opposing positions criticized
   without being stated in a form their proponents would accept.
+- **Audience coherence**: identify the implied addressee of the draft
+  as a whole and of each passage. A draft may deliberately address
+  more than one camp, but every turn from one camp to another must be
+  signaled ("some may accuse X of...", "in radical leftist circles...").
+  Flag unsignaled turns, and especially concessions written to win over
+  one camp that another camp will read as the author's own unmarked
+  position. The fix is usually to attribute the concession to its
+  intended audience ("if a pro-lifer is disturbed by X, I can't say I
+  don't understand the discomfort") instead of asserting it in the
+  first person ("I feel disturbed by X"). When a draft alternates
+  between defending against two opposed camps, check whether it ever
+  tells the reader it is doing so; if not, suggest one early framing
+  sentence naming both.
+- **Stated goal**: the draft must know what it is trying to change in
+  the reader (persuade of a thesis, reframe a debate, defend against
+  an objection). Flag a draft whose goal cannot be stated in one
+  sentence using only the text itself, and a conclusion that
+  improvises a goal never set up earlier in the draft.
 
 ## House style (mechanics)
 
