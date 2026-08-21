@@ -37,7 +37,17 @@ and is never a finding by itself.
   think of sounds like AI, report the problem without a rewrite.
 - Jargon is part of the voice. Never flag jargon as such; flag it only
   under the Pinker check (load-bearing term the reader can neither
-  infer nor look up from context).
+  infer nor look up from context). A link is not a gloss: readers don't
+  click through mid-read, so a load-bearing term needs a short first-use
+  explainer in the text itself (an appositive or parenthetical of
+  roughly 15 words or fewer).
+- Length is never a finding. As of August 2026, articles are written to
+  be published primarily as podcast narrations, so long drafts are
+  intentional. Flag only genuine redundancy: a point restated with no
+  didactic or rhetorical purpose (e.g. a conclusion that re-delivers the
+  same moral in several consecutive paragraphs). Deliberate repetition
+  that re-anchors a drifting listener is part of the format, not a
+  finding.
 
 ## Prose checks
 
@@ -85,6 +95,12 @@ and is never a finding by itself.
   an objection). Flag a draft whose goal cannot be stated in one
   sentence using only the text itself, and a conclusion that
   improvises a goal never set up earlier in the draft.
+- **Intro/overview**: the draft must open with a brief intro before
+  its first section — an informal abstract that gives the reader an
+  overview of what the article is about and where it is going. Flag a
+  draft that launches directly into its first section (a narrative, an
+  argument, background material) with no framing intro, and suggest
+  adding one.
 
 ## House style (mechanics)
 
@@ -126,6 +142,32 @@ not the author's voice:
 - Hedge-everything conclusions that retreat from the essay's own claim.
 - Symmetric aphoristic closers and slogan-like phrasing.
 - Em-dash-heavy sentence rhythm sustained across paragraphs.
+- Meta narration of the writing process: prose that narrates the
+  author's (or the assistant's) drafting decisions or mental state
+  instead of just making the move ("this is probably a good place for
+  a concession", "I should be explicit about who I'm writing for",
+  "as I complained about earlier"). Concessions and self-references
+  are fine; narrating them is not. Prefer neutral framings: "to be
+  fair", "it might be useful to clarify", "the association discussed
+  earlier".
+
+## Applying fixes
+
+When the user asks for edits to be applied, every rewritten sentence
+must itself pass the House style and AI-slop checks above before it
+goes in the draft. The most common failure is introducing em dashes
+while rephrasing: em dashes belong only in blockquote attributions, so
+rewrites must use commas, colons, periods, or parentheses instead.
+
+The same bar applies to any NEW passage drafted for an article, in any
+session, not just fixes applied during a review. In particular, the
+register of the user's chat prompts must never leak into drafted
+prose: in chat he narrates his mental process and writes carelessly on
+purpose, while the article voice is more neutral and objective, even
+when making concessions or acknowledging bias. Before proposing a
+paragraph, reread it against the deny-list, with special attention to
+meta narration in the opening sentence, where the temptation to
+"hand off" from the conversation into the draft is strongest.
 
 ## Report format
 
