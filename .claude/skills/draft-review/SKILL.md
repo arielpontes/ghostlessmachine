@@ -68,6 +68,20 @@ and is never a finding by itself.
 - **Pinker** (The Sense of Style): curse of knowledge — a load-bearing
   term or assumption the intended reader cannot infer from context and
   was never given.
+- **Read-aloud (podcast)**: articles are narrated aloud, so flag
+  structures that fail in audio even when they work on the page.
+  Sentence length alone is never the problem (long sentences are
+  normal in the audiobook register the author is used to); flag only
+  structures that force a listener to hold an unfinished clause in
+  memory while something else plays out: a parenthetical or
+  apposition of roughly 20+ words interrupting a clause (move it to
+  its own sentence), a subject separated from its verb by 20+ words,
+  several parallel clauses each carrying its own statistic (aim for
+  one number per sentence), and quote fragments woven into the
+  syntax of the surrounding sentence. Page-only notation (slashes,
+  acronym parentheticals, "etc.", load-bearing scare quotes,
+  bracketed quote edits) is reported as a narration note for the
+  author to handle while recording, not as a rewrite finding.
 
 ## Argument checks
 
@@ -158,6 +172,12 @@ must itself pass the House style and AI-slop checks above before it
 goes in the draft. The most common failure is introducing em dashes
 while rephrasing: em dashes belong only in blockquote attributions, so
 rewrites must use commas, colons, periods, or parentheses instead.
+When splitting a long sentence, never start the new sentence with a
+bare conjunction ("And...", "But..."); the author finds it awkward to
+read aloud. When the split point falls inside reported speech or
+a summarized opposing view, keep the attribution attached (e.g. "In
+their view, this leads to...") so the continuation doesn't read as
+the author's own claim.
 
 The same bar applies to any NEW passage drafted for an article, in any
 session, not just fixes applied during a review. In particular, the
