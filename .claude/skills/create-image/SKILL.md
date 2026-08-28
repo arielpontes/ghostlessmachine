@@ -33,8 +33,11 @@ say so instead of attempting them.
 - Simple glyphs (a dollar sign, a letter) don't need an SVG: render
   text with Pillow using a system font from
   `/System/Library/Fonts/Supplemental/`.
-- Download working files to the scratchpad, not the repo. Only the
-  final PNG enters the post bundle.
+- Save working files (downloaded SVGs, generated variants) to
+  `image-workshop/<post-slug>/` at the repo root — never to the
+  session scratchpad or `/tmp`, which get wiped after a few days. The
+  folder is gitignored; only the final approved PNG enters the post
+  bundle.
 
 ## Composing
 

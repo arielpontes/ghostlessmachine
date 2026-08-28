@@ -28,8 +28,10 @@ to `index.md` and referenced by the `image:` front matter field.
    the source is always cited, and the image gets taken down if the
    owner ever asks.
 5. Verify candidates before presenting them: download small previews
-   and look at them — search-page text descriptions are often wrong or
-   miss what the image actually conveys.
+   into `image-workshop/<post-slug>/` at the repo root (gitignored —
+   never the session scratchpad or `/tmp`, which get wiped after a few
+   days) and look at them — search-page text descriptions are often
+   wrong or miss what the image actually conveys.
 6. Present several candidates to the user as links, each with a
    one-line description of what it shows and where it's from. The user
    picks — never install an image without approval, since the choice is

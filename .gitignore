@@ -13,3 +13,7 @@ __pycache__/
 
 # WordPress export (not needed in repo)
 wordpress-export.xml
+
+# Image working files (candidates, collage variants) — kept out of git,
+# but in the repo dir so they survive /tmp cleanup
+/image-workshop/
