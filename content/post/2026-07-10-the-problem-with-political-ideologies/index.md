@@ -2,11 +2,10 @@
 title: "The problem with political ideologies"
 date: 2026-07-10T16:12:00
 slug: "the-problem-with-political-ideologies"
-image: "rangers-vs-celts.jpg"
-image_caption: "Fans at a Celtic vs. Rangers game, one of [the deepest team
-  rivalries](https://thesocietypages.org/engagingsports/2021/11/29/historical-memory-and-the-rangers-vs-celtic-soccer-rivalry-in-scotland/)
-  in the history of football. Political rivalries are often a matter of group
-  identity rather than truly irreconcilable ideological differences."
+image: "symbols.png"
+image_caption: "The hammer and sickle, the circle-A, and the dollar sign. The
+  20th century is usually remembered as a two-way struggle between communism
+  and capitalism, erasing the anarchist tradition that opposed both."
 description: "Why I’m not on the right, left, or center"
 draft: true
 ---
