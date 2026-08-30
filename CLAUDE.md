@@ -10,10 +10,17 @@ be educational and informative without being too technical. When editing or
 reviewing article drafts, favor adding references to specific events,
 historical dates, and important individuals, and flag imprecise claims.
 
+All article prose is governed by the `writing` skill
+(`.claude/skills/writing/SKILL.md`). Load it BEFORE drafting, editing, or
+rewriting any passage destined for an article, however small, and when
+reviewing a draft, audit it against those same rules. Articles are
+published primarily as podcast narrations, so every sentence must survive
+being read aloud.
+
 Two recurring pitfalls to check in every draft: an undefined audience
 (passages addressing different camps without signaling the turn) and an
 undefined goal (a conclusion that improvises a thesis never set up
-earlier). The `draft-review` skill has the full checks.
+earlier). The `writing` skill has the full checks.
 
 ## Python scripts
 

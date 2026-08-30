@@ -1,22 +1,32 @@
 ---
-name: draft-review
+name: writing
 description: >-
-  Use when the user asks for a review of a blog article draft. Audits the
-  draft against named human standards (Orwell, Zinsser, Williams, Pryor,
-  Rapoport) plus an AI-slop deny-list. High lenience: the goal is to
-  polish Ariel's casual/nerdy voice, never to replace it. Reports findings
-  in chat; edits the draft only when asked.
+  The rules all blog article prose must follow — named human standards
+  (Orwell, Zinsser, Williams, Pryor, Rapoport), a read-aloud/podcast
+  check, house style, and an AI-slop deny-list. Load BEFORE drafting,
+  editing, or rewriting any passage destined for an article, in any
+  session, and when the user asks for a review of a draft (reviews
+  audit against these same rules). High lenience: the goal is to
+  polish Ariel's casual/nerdy voice, never to replace it.
 ---
 
-# Draft review
+# Writing
 
-Review a blog article draft against the named standards below. This is
-an audit, not an exercise of taste: every finding must cite the rule it
-violates by name and quote the offending passage. Anything that cannot
-be tied to a rule does not get reported.
+This skill defines the rules all article prose must follow. Articles
+are published primarily as podcast narrations, so every sentence must
+survive being read aloud. The skill is used in two modes:
 
-Report findings in the chat response only. Do not edit the draft unless
-the user asks for fixes to be applied.
+- **Writing mode**: load this skill before drafting, editing, or
+  rewriting any passage destined for an article, in any session, no
+  matter how small the passage. Every new or rewritten sentence must
+  pass the rules below; the Drafting section at the end has the
+  write-time specifics.
+- **Review mode**: when the user asks for a review of a draft, audit
+  it against the rules below. This is an audit, not an exercise of
+  taste: every finding must cite the rule it violates by name and
+  quote the offending passage. Anything that cannot be tied to a rule
+  does not get reported. Report findings in the chat response only;
+  do not edit the draft unless the user asks for fixes to be applied.
 
 ## Voice and lenience (governs everything below)
 
@@ -74,8 +84,11 @@ and is never a finding by itself.
   normal in the audiobook register the author is used to); flag only
   structures that force a listener to hold an unfinished clause in
   memory while something else plays out: a parenthetical or
-  apposition of roughly 20+ words interrupting a clause (move it to
-  its own sentence), a subject separated from its verb by 20+ words,
+  apposition of roughly 20+ words, whether it interrupts a clause or
+  trails at the end of one, and likewise any parenthetical containing
+  a complete standalone statement (move these to their own sentence:
+  a listener cannot hear parentheses), a subject separated from its
+  verb by 20+ words,
   several parallel clauses each carrying its own statistic (aim for
   one number per sentence), and quote fragments woven into the
   syntax of the surrounding sentence. Page-only notation (slashes,
@@ -165,11 +178,12 @@ not the author's voice:
   fair", "it might be useful to clarify", "the association discussed
   earlier".
 
-## Applying fixes
+## Drafting
 
-When the user asks for edits to be applied, every rewritten sentence
-must itself pass the House style and AI-slop checks above before it
-goes in the draft. The most common failure is introducing em dashes
+Every sentence drafted for an article — a new passage, a rewrite, or a
+fix applied during a review — must itself pass ALL the checks above
+(including Read-aloud, House style, and the AI-slop deny-list) before
+it goes in the draft. The most common failure is introducing em dashes
 while rephrasing: em dashes belong only in blockquote attributions, so
 rewrites must use commas, colons, periods, or parentheses instead.
 When splitting a long sentence, never start the new sentence with a
@@ -179,9 +193,7 @@ a summarized opposing view, keep the attribution attached (e.g. "In
 their view, this leads to...") so the continuation doesn't read as
 the author's own claim.
 
-The same bar applies to any NEW passage drafted for an article, in any
-session, not just fixes applied during a review. In particular, the
-register of the user's chat prompts must never leak into drafted
+The register of the user's chat prompts must never leak into drafted
 prose: in chat he narrates his mental process and writes carelessly on
 purpose, while the article voice is more neutral and objective, even
 when making concessions or acknowledging bias. Before proposing a
@@ -189,7 +201,7 @@ paragraph, reread it against the deny-list, with special attention to
 meta narration in the opening sentence, where the temptation to
 "hand off" from the conversation into the draft is strongest.
 
-## Report format
+## Review report format
 
 For each finding: the quoted passage, the rule violated (by name), one
 sentence on why, and — optionally — a rewrite in the author's voice.
