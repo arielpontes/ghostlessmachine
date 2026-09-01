@@ -221,3 +221,118 @@
         --right-sidebar-max-width: 18%;
     }
 }
+
+// Standalone podcast episode page (layouts/post/podcast.html): one centered
+// card with the cover, title and big stacked platform buttons.
+.podcast-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+
+    .podcast-card {
+        width: 100%;
+        max-width: 48rem;
+        padding: var(--card-padding);
+        border-radius: var(--card-border-radius);
+        background: var(--card-background);
+        color: var(--card-text-color-main);
+        box-shadow: var(--shadow-l2);
+        text-align: center;
+
+        .podcast-show {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--card-text-color-main);
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        > img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--card-border-radius);
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        h1 {
+            margin: 20px 0 4px;
+            font-size: 2.2rem;
+        }
+
+        .podcast-duration {
+            margin: 0 0 20px;
+            color: var(--card-text-color-secondary);
+        }
+
+        .podcast-player {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+
+            audio {
+                flex: 1;
+                min-width: 0;
+            }
+
+            label {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 1.4rem;
+                color: var(--card-text-color-secondary);
+            }
+
+            select {
+                padding: 4px 6px;
+                border-radius: var(--tag-border-radius);
+                border: 1px solid var(--card-separator-color);
+                background: var(--card-background);
+                color: var(--card-text-color-main);
+                font: inherit;
+            }
+        }
+
+        .podcast-platforms {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+
+            a {
+                justify-content: center;
+                padding: 14px 20px;
+                font-size: 1.8rem;
+                border: 1px solid var(--card-separator-color);
+
+                svg {
+                    width: 22px;
+                    height: 22px;
+                }
+            }
+        }
+
+        .podcast-home {
+            display: block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            border-radius: var(--tag-border-radius);
+            border: 1px solid var(--card-separator-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--card-text-color-main);
+        }
+    }
+}

@@ -23,14 +23,15 @@
         {{ end }}
     </section>
 
-    {{/* Episode cards link out to redirect_url (YouTube). For episodes with a
-         `podcast` front matter map, that click instead opens a dialog offering
-         the episode on each platform; the map below is keyed by the card's
-         outgoing URL so the script can match clicked links to episodes. */}}
+    {{/* Episode cards link to the episode page, which lists the platform
+         links itself. Clicking a card here instead opens a dialog with the
+         same links; the map below is keyed by the card's href so the script
+         can match clicked links to episodes. */}}
     {{ $episodes := dict }}
     {{ range $podcasts }}
-        {{ if and .Params.podcast .Params.redirect_url }}
-            {{ $episodes = merge $episodes (dict .Params.redirect_url (merge .Params.podcast (dict "title" .Title))) }}
+        {{ $page := . }}
+        {{ with .Params.podcast }}
+            {{ $episodes = merge $episodes (dict $page.RelPermalink (merge . (dict "title" $page.Title))) }}
         {{ end }}
     {{ end }}
     <script type="application/json" id="episode-links">{{ $episodes | jsonify | safeJS }}</script>
@@ -38,13 +39,7 @@
     <dialog id="episode-dialog">
         <button type="button" class="dialog-close" aria-label="{{ if eq site.Language.Lang "pt" }}Fechar{{ else }}Close{{ end }}">✕</button>
         <h2></h2>
-        <nav class="podcast-platforms">
-            <span>{{ if eq site.Language.Lang "pt" }}Disponível em{{ else }}Listen on{{ end }}:</span>
-            <a data-platform="youtube" target="_blank">{{ partial "helper/icon" "brand-youtube" }}YouTube</a>
-            <a data-platform="spotify" target="_blank">{{ partial "helper/icon" "brand-spotify" }}Spotify</a>
-            <a data-platform="apple" target="_blank">{{ partial "helper/icon" "brand-apple-podcast" }}Apple Podcasts</a>
-            <a data-platform="pocketcasts" target="_blank">{{ partial "helper/icon" "pocketcasts" }}Pocket Casts</a>
-        </nav>
+        {{ partial "podcast-platforms.html" (dict "Links" dict) }}
     </dialog>
 
     <script>
@@ -54,7 +49,7 @@
             var title = dialog.querySelector('h2');
 
             document.querySelectorAll('.article-list a[href]').forEach(function (card) {
-                var episode = episodes[card.href];
+                var episode = episodes[card.getAttribute('href')];
                 if (!episode) return;
                 card.addEventListener('click', function (event) {
                     event.preventDefault();

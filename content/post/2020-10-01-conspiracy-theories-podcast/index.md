@@ -2,8 +2,9 @@
 title: "Conspiracy theories"
 date: 2020-10-01T14:17:32
 slug: "conspiracy-theories-podcast"
-redirect_url: "https://youtu.be/mLC7ZpNKi_I"
+layout: "podcast"
 podcast:
+  audio: "https://anchor.fm/s/21b14718/podcast/play/20458964/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-10-01%2F62a6d3a149efd1e1823c59a9db6af381.m4a"
   youtube: "https://youtu.be/mLC7ZpNKi_I"
   spotify: "https://open.spotify.com/episode/0crZBjSXnMCGdcPIj3wu3r"
   apple: "https://podcasts.apple.com/us/podcast/ghostless-machine/id1533152089?i=1000493235261"

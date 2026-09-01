@@ -334,18 +334,50 @@ is imported with `medium_url` set. Older stubs (e.g. `conspiracy-theories`,
 `on-jordan-peterson`, `why-im-not-a-theist`) are still stubs and could be
 imported the same way.
 
-### Redirecting podcast posts to YouTube
+### Podcast episode pages (September 2026)
 
-Podcast posts (🎙️ in the title) are stubs whose real content is a YouTube
-video; on WordPress they were full redirects. Setting `redirect_url` in
-frontmatter recreates this:
+Podcast posts (tagged `Podcast`, with `layout: podcast` and a `podcast`
+front matter map of per-platform episode URLs) render through
+`layouts/post/podcast.html`, a standalone page that is the shareable
+"pick a platform" destination: cover, title, duration and big stacked
+platform buttons from `_partials/podcast-platforms.html`, nothing else.
+The same partial builds the dialog on `/podcasts/` (passed an empty
+`Links` map; JS fills the hrefs via the `data-platform` attributes), so
+the platform list and order live in one place. Styles are `.podcast-page`
+in `custom.scss`.
 
-- The single page emits `<meta http-equiv="refresh" content="0; url=...">`
-  via the site override of the theme's empty
-  `layouts/_partials/head/custom.html` hook.
-- List cards link directly to the URL — the same two partial overrides
-  used for `medium_url` also honor `redirect_url` (which takes precedence
-  if both are set).
+**In-page player.** `podcast.audio` holds the episode's MP3/M4A URL —
+the `<enclosure>` from the Spotify for Podcasters RSS feed
+(`anchor.fm/s/21b14718/podcast/rss`; the `anchor.fm/.../play/...` URL
+302s to CloudFront and supports range requests, so seeking works). The
+page renders a plain `<audio controls preload="metadata">` — not a
+YouTube/Spotify embed, which stops when a phone locks — plus a speed
+`<select>`, Media Session metadata (lock-screen title/cover), and
+`localStorage` for per-episode position and the chosen speed. For a new
+episode, copy the enclosure URL from the feed into `audio:`.
 
-Unlike `medium_url`, a `redirect_url` page is never really viewable
-locally — even a direct visit bounces to the target.
+**Testing media in Chrome via the extension.** A tab opened by the
+browser tools is usually hidden, and Chrome defers all media loading in
+hidden tabs (`loadstart` then `stalled`, `readyState` stuck at 0, even
+for a blob URL). This is not a page bug; verify `<audio>` behavior in a
+foreground tab by hand.
+
+**Bypassing the theme chrome.** A layout that defines no `block`s is
+rendered as-is, without `baseof.html` — no sidebars, menus or footer. Keep
+`partial "head/head.html"` (CSS, title, Open Graph tags for link previews)
+and `partial "head/colorScheme"` (dark mode) so the page still matches the
+site. Front matter `layout: podcast` on a `post` resolves to
+`layouts/post/podcast.html`.
+
+Until September 2026 these posts carried `redirect_url` (a leftover from
+the WordPress-era redirects to YouTube), which made the episode URL
+bounce to YouTube. The `redirect_url` mechanism still exists — the
+`head/custom.html` override emits a `<meta http-equiv="refresh">` and the
+list-card overrides link out to it — but no post uses it any more. Don't
+add it back to episodes: it would make the episode page unreachable again.
+
+Template gotcha hit while keying the `/podcasts/` episode map by local
+URL: inside `{{ with .Params.podcast }}`, `$` is the template's root
+page (the podcasts page), not the ranged post, and `.Page` on a
+front-matter map doesn't resolve to the post either. Capture the post in
+a variable before `with` (`{{ $page := . }}`).

@@ -1,0 +1,18 @@
+{{/* "Listen on:" links for one episode, ordered by platform popularity.
+     `Links` is the post's `podcast` front matter map (platform key ->
+     episode URL). The dialog on the podcasts page passes an empty map and
+     fills the hrefs from JS via the data-platform attributes. Labels are
+     inlined for the same reason as in home-tabs.html. */}}
+{{- $links := .Links -}}
+{{- $platforms := slice
+    (dict "key" "youtube" "icon" "brand-youtube" "label" "YouTube")
+    (dict "key" "spotify" "icon" "brand-spotify" "label" "Spotify")
+    (dict "key" "apple" "icon" "brand-apple-podcast" "label" "Apple Podcasts")
+    (dict "key" "pocketcasts" "icon" "pocketcasts" "label" "Pocket Casts")
+-}}
+<nav class="podcast-platforms">
+    <span>{{ if eq site.Language.Lang "pt" }}Disponível em{{ else }}Listen on{{ end }}:</span>
+    {{- range $platforms }}
+    <a data-platform="{{ .key }}" href="{{ index $links .key }}" target="_blank">{{ partial "helper/icon" .icon }}{{ .label }}</a>
+    {{- end }}
+</nav>

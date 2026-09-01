@@ -1,0 +1,98 @@
+{{/* Standalone page for podcast episodes (`layout: podcast` in front
+     matter). Defines no blocks, so Hugo skips the theme's baseof.html:
+     no sidebars, menus or footer — just a centered card like the dialog
+     on /podcasts/, so a shared episode link lands on a plain platform
+     picker. The theme's head partial is kept for CSS, color scheme and
+     the Open Graph tags that give the link a preview when shared. */}}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="{{ default `ltr` .Language.LanguageDirection }}">
+    <head>
+        {{- partial "head/head.html" . -}}
+    </head>
+    <body class="podcast-page">
+        {{- partial "head/colorScheme" . -}}
+        <main class="podcast-card">
+            {{/* Show header: avatar + site name, linked home, so a visitor
+                 arriving from a shared link sees whose podcast this is. */}}
+            <a class="podcast-show" href="{{ site.Home.RelPermalink }}">
+                {{- with site.Params.sidebar.avatar -}}
+                    {{- $avatar := partial "helper/image" (dict "Image" . "Resources" resources "Context" $) -}}
+                    <img src="{{ $avatar.Permalink }}" width="{{ $avatar.Width }}" height="{{ $avatar.Height }}" alt="">
+                {{- end -}}
+                <span>{{ site.Title }}</span>
+            </a>
+            {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
+            {{ with $image }}
+            <img src="{{ .Permalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
+            {{ end }}
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.podcast.duration }}<p class="podcast-duration">{{ . }}</p>{{ end }}
+            {{/* In-page player from the episode's `podcast.audio` URL (the
+                 RSS enclosure hosted by Spotify for Podcasters). Plain
+                 <audio> so playback survives a locked screen on phones. */}}
+            {{ with .Params.podcast.audio }}
+            <div class="podcast-player">
+                <audio controls preload="metadata" src="{{ . }}"></audio>
+                <label>{{ if eq site.Language.Lang "pt" }}Velocidade{{ else }}Speed{{ end }}
+                    <select class="podcast-speed">
+                        {{ range slice "1" "1.25" "1.5" "1.75" "2" }}<option value="{{ . }}">{{ . }}×</option>{{ end }}
+                    </select>
+                </label>
+            </div>
+            {{ end }}
+            {{ partial "podcast-platforms.html" (dict "Links" .Params.podcast) }}
+            <a class="podcast-home" href="{{ site.Home.RelPermalink }}">{{ if eq site.Language.Lang "pt" }}Mais episódios e artigos{{ else }}More episodes and articles{{ end }} →</a>
+        </main>
+        {{ if .Params.podcast.audio }}
+        <script>
+            (function () {
+                var audio = document.querySelector('.podcast-player audio');
+                var speed = document.querySelector('.podcast-speed');
+
+                // Remember the playback position per episode, and the chosen
+                // speed across episodes, in this browser.
+                var positionKey = 'podcast-position:' + {{ .RelPermalink }};
+                var speedKey = 'podcast-speed';
+                function resume() {
+                    var saved = parseFloat(localStorage.getItem(positionKey));
+                    if (saved > 0 && saved < audio.duration - 10) audio.currentTime = saved;
+                }
+                if (audio.readyState >= 1) resume();
+                else audio.addEventListener('loadedmetadata', resume, { once: true });
+                audio.addEventListener('timeupdate', function () {
+                    localStorage.setItem(positionKey, audio.currentTime);
+                });
+                audio.addEventListener('ended', function () {
+                    localStorage.removeItem(positionKey);
+                });
+
+                speed.value = localStorage.getItem(speedKey) || '1';
+                audio.playbackRate = parseFloat(speed.value);
+                speed.addEventListener('change', function () {
+                    audio.playbackRate = parseFloat(speed.value);
+                    localStorage.setItem(speedKey, speed.value);
+                });
+
+                // Lock screen / notification controls with the episode's
+                // title and cover instead of the page URL.
+                if ('mediaSession' in navigator) {
+                    navigator.mediaSession.metadata = new MediaMetadata({
+                        title: {{ .Title }},
+                        artist: {{ site.Title }},
+                        artwork: [{{ with $image }}{ src: {{ .Permalink }} }{{ end }}]
+                    });
+                    navigator.mediaSession.setActionHandler('seekbackward', function (details) {
+                        audio.currentTime = Math.max(0, audio.currentTime - (details.seekOffset || 15));
+                    });
+                    navigator.mediaSession.setActionHandler('seekforward', function (details) {
+                        audio.currentTime = Math.min(audio.duration, audio.currentTime + (details.seekOffset || 15));
+                    });
+                    navigator.mediaSession.setActionHandler('seekto', function (details) {
+                        audio.currentTime = details.seekTime;
+                    });
+                }
+            })();
+        </script>
+        {{ end }}
+    </body>
+</html>
