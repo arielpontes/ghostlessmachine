@@ -137,6 +137,11 @@ the choices below are findings, never the choices themselves:
 
 - American spelling; the Chicago Manual of Style is the tiebreaker for
   anything not listed here.
+- Straight (typewriter) quotes and apostrophes only in the markdown
+  source (`"` and `'`), never curly/smart ones (`“ ” ‘ ’`) — Hugo's
+  Typographer extension curls them at render time. Curly quotes appear
+  when text is pasted from rich text editors; flag them, and normalize
+  pasted text before it goes in a draft.
 - Deliberate deviation from Chicago: logical (British) quote
   punctuation — periods and commas go inside the closing quotation
   mark only when they are part of the quote.
