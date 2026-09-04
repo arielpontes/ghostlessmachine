@@ -1,0 +1,6 @@
+{{- /* Button linking to one of the [support] URLs in params.toml:
+       {{< button kofi >}}Support me on Ko-fi{{< /button >}} */ -}}
+{{- $key := .Get 0 -}}
+{{- $url := index site.Params.support $key -}}
+{{- if not $url }}{{ errorf "button shortcode: no support.%s URL in params.toml" $key }}{{ end -}}
+<a class="support-button" href="{{ $url }}" target="_blank">{{ .Inner | strings.TrimSpace }}</a>

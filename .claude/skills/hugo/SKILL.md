@@ -334,6 +334,30 @@ is imported with `medium_url` set. Older stubs (e.g. `conspiracy-theories`,
 `on-jordan-peterson`, `why-im-not-a-theist`) are still stubs and could be
 imported the same way.
 
+### Reader actions: subscribe / support / feedback (September 2026)
+
+The three reader actions the WordPress homepage used to group (Substack
+newsletter, Ko-fi, Admonymous feedback) have one source of truth,
+`[support]` in `params.toml`, and four surfaces:
+
+- `/support/` (`content/page/support/`, EN + PT, in the main menu): the
+  URL to say in podcast outros and paste into show notes. Body is
+  markdown; the Substack signup iframe and the buttons come from the
+  `substack` and `button` shortcodes because raw HTML in content fails
+  markdownlint's MD033. `{{< button kofi >}}` looks the key up in
+  `[support]`. The page also owns the old `/mailing-list/` URL via
+  `aliases`.
+- The "Stay in touch:" row after every post: `_partials/support-links.html`,
+  rendered from the site's `layouts/single.html` override (a copy of the
+  theme's) for `post` pages only. It shares the chip styling of
+  `.podcast-platforms` in `custom.scss`.
+- One line linking to `/support/` under the platform links on `/podcasts/`
+  and on episode pages (`.podcast-support`).
+- The Ko-fi coffee icon in the sidebar social row: a `menu.social` entry
+  in `languages.toml`, duplicated per language like the others. Tabler
+  has no Ko-fi brand icon; `coffee`, `mail`, `message-circle` and `heart`
+  were downloaded from Tabler's outline set into `assets/icons/`.
+
 ### Podcast episode pages (September 2026)
 
 Podcast posts (tagged `Podcast`, with `layout: podcast` and a `podcast`

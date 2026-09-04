@@ -13,6 +13,7 @@
         <a href="https://pocketcasts.com/podcast/ghostless-machine/dbe38cb0-e00e-0138-e7bb-0acc26574db2" target="_blank">{{ partial "helper/icon" "pocketcasts" }}Pocket Casts</a>
         <a href="https://anchor.fm/s/21b14718/podcast/rss" target="_blank">{{ partial "helper/icon" "rss" }}RSS</a>
     </nav>
+    {{ with site.GetPage "/page/support" }}<a class="podcast-support" href="{{ .RelPermalink }}">{{ if eq site.Language.Lang "pt" }}Assine, apoie ou dê feedback{{ else }}Subscribe, support me, or give feedback{{ end }} →</a>{{ end }}
 
     {{/* Podcasts are English-only bundles; list them from the default-
          language site so the Portuguese page shows the same episodes. */}}

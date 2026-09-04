@@ -140,8 +140,11 @@
     }
 }
 
-// "Listen on: …" platform links under the tabs on the /podcasts/ page
-.podcast-platforms {
+// "Listen on: …" platform links under the tabs on the /podcasts/ page, and
+// the "Stay in touch: …" reader-action row after every post
+// (_partials/support-links.html).
+.podcast-platforms,
+.support-links {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -324,7 +327,8 @@
             }
         }
 
-        .podcast-home {
+        .podcast-home,
+        .podcast-support {
             display: block;
             margin-top: 20px;
             padding: 12px 20px;
@@ -335,4 +339,34 @@
             color: var(--card-text-color-main);
         }
     }
+}
+
+// "Subscribe, support me, or give feedback →" line under the platform links
+// on /podcasts/ (the episode page styles its own above).
+.template-podcasts .podcast-support {
+    display: block;
+    margin-top: 12px;
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--card-text-color-secondary);
+}
+
+// /support/ page: Substack signup embed and the action buttons rendered by
+// the `substack` and `button` shortcodes.
+.substack-embed {
+    display: block;
+    max-width: 100%;
+    border: 1px solid var(--card-separator-color);
+    border-radius: var(--tag-border-radius);
+    background: #fff;
+}
+
+.support-button {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: var(--tag-border-radius);
+    background: var(--accent-color);
+    color: var(--accent-color-text) !important;
+    font-weight: 600;
+    box-shadow: var(--shadow-l1);
 }

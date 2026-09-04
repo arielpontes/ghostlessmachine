@@ -1,0 +1,12 @@
+{{/* "Stay in touch:" row of reader actions (subscribe / support /
+     feedback), rendered after the body of every post. URLs come from
+     [support] in params.toml. Labels are inlined for the same reason as
+     in home-tabs.html. */}}
+{{- $pt := eq site.Language.Lang "pt" -}}
+{{- $s := site.Params.support -}}
+<nav class="support-links">
+    <span>{{ if $pt }}Fique por dentro{{ else }}Stay in touch{{ end }}:</span>
+    <a href="{{ $s.substack }}" target="_blank">{{ partial "helper/icon" "mail" }}{{ if $pt }}Assine a newsletter{{ else }}Subscribe{{ end }}</a>
+    <a href="{{ $s.kofi }}" target="_blank">{{ partial "helper/icon" "coffee" }}{{ if $pt }}Apoie no Ko-fi{{ else }}Support me on Ko-fi{{ end }}</a>
+    <a href="{{ $s.feedback }}" target="_blank">{{ partial "helper/icon" "message-circle" }}{{ if $pt }}Dê feedback{{ else }}Give feedback{{ end }}</a>
+</nav>
