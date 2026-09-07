@@ -17,10 +17,9 @@ Later on, Gilbert Ryle (British philosopher) in his book The Concept of Mind att
 Afterward, Arthur Koestler writes a book, The Ghost in the Machine, which is a reference to this metaphor, and also takes distance from it by stating that the brain developed starting from simpler structures and that it is the only “ghost in the machine”.
 Finally, Masamune Shirow creates the manga Ghost in the Shell (which is adapted into 3 movies and 2 series, which brought me to my current research) which deals with topics related to dualism, in a not so distant future in which people substitute parts of their body with other more efficient ones, to the point that, in some cases, the only thing that is left of the original being is the organic brain, the “ghost” (understood here more as “consciousness” than as “soul”).
 
-|  |
-| --- |
-| [embed]http://www.youtube.com/watch?v=XHfs7OQ\_Cwk[/embed] |
-| Some of the most philosophical scenes from the movie |
+{{< youtube XHfs7OQ_Cwk >}}
+
+*Some of the most philosophical scenes from the movie*
 
 The name of the blog is a reference to all this. From my perspective, I am such a complex machine that I “think”. But this doesn’t imply any “soul” or anything of the kind. I believe everything can be reduced to biophysics, biochemistry, electrochemistry. Interaction between matter.
 

@@ -42,7 +42,8 @@ But it’s not only blacks who have been subdued and treated as inferior through
 
 “*Oh, come on, women have nothing to complain about. They’ve already gotten all the rights they wanted, they have the same status as men. Feminists nowadays are only a bunch of frustrated fatties who get pissed because they can’t reach the incredible and noble standard imposed by men so they start complaining about meaningless things.*” Yes. There are people who think like this. Don’t believe it? You think they say these things jokingly but deep down they don't really think like that?
 Amazingly enough:
-[embed]https://www.youtube.com/watch?v=qt\_0ko4njmc[/embed]
+
+{{< youtube qt_0ko4njmc >}}
 
 Indeed, there has been [a lot of progress](http://en.wikipedia.org/wiki/Women's_rights) in the last two centuries. Women even gained the right to vote! Can you believe it?? For the first time in New Zealand in 1893. In Brazil it was only in 1932. In the Western world they gained other rights, as well: the right to own property, the right to voluntary maternity (contraception), and working rights without *de jure* discrimination. It’s enough, isn’t it? Who actually cares about *de facto* discrimination or about women in other parts of the world? Who cares that women’s salaries are *de facto* lower than men’s? Who cares that in the Arab Emirates a man has the [legal right](http://edition.cnn.com/2010/WORLD/meast/10/19/uae.court.ruling/index.html) to beat his wife as long as it doesn’t leave marks? Never mind, right? United Arab Emirates… who cares? They're too far away. After years of struggles and after several entities concerned with women’s issues came together, the United Nations created [UN Women](http://en.wikipedia.org/wiki/UN_Women). But who takes the UN seriously anyway? Everybody knows they are an irrelevant organization led by frustrated and PMS-ing fatties.
 

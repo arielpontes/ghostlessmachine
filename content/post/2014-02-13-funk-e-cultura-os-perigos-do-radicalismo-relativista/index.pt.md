@@ -135,7 +135,7 @@ O retrato hiper-sexualizado da mulher, um dos aspectos mais infames do funk, mos
 
 O abandono do pai e as dificuldades da mãe solteira só revoltam as crianças, produtos dessa cultura doente, que então se tornam violentas e acabam morrendo no tráfico.
 
-[embed]https://www.youtube.com/watch?v=w6PWF1u3rhc&t=23m13s[/embed]
+{{< youtube id="w6PWF1u3rhc" start="1393" >}}
 
 23m13s: Entrevista com mãe solteira cujo filho morreu no tráfico
 
@@ -175,7 +175,7 @@ A inveja e a disputa por status de dominância em grupos sociais podem parecer a
 
 Não sei se há artigos que confirmem essas minhas afirmações específicas sobre o Brasil. Mas com base nos que já citei, não é um grande salto fazer essa interpretação. Além do trabalho de Archer, outro que ilustra bem como toda essa questão do sexo, competição e ostentação estão relacionados é o documentário Tough Guise, já mencionado mais acima. Mas a elite religiosamente marxista e relativista de classe-média insiste, por motivos que me parecem pura sobre-correção e paranóia, a defender vigorosamente tudo isso.
 
-[embed]http://www.youtube.com/watch?v=O4t94cFV7zM&w=540[/embed]
+{{< youtube O4t94cFV7zM >}}
 
 Sério? Sério que é TÃO importante defender ISSO? Eu acho que se 1% das influências negativas que eu citei forem verdadeiras, já não vale a pena gastar energia para defender obras como esse clipe. Mas há realmente quem defenda esse tipo de expressão? Sim. É comum, por exemplo, dizerem que "no fundo toda a sociedade é assim" e que a única diferença entre o funk e outros estilos é que no funk não há "pudor hipócrita" da classe dominante. De fato, concordo que em grande parte a sociedade é assim. Não é à toa que o funk e o hip hop fazem tanto sucesso na classe média, como já ressaltei. Mas novamente, isso não defende o funk de nenhuma forma. É mais uma extensão da crítica a toda a sociedade. E sim: eu critico esses valores tanto na favela quanto fora dela. Mas o irônico é que Brasil se une para fazer chacota do Rei do Camarote, mas quando o criticado é o MC Guimê, se torna elitismo opressor.
 
