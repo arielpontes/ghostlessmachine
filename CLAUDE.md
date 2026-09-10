@@ -51,18 +51,11 @@ markdownlint <changed files>
 and fix every error. If a generator script produces non-compliant output,
 fix the generator, not just the generated files.
 
-## Broken images from the WordPress migration (paused, not abandoned)
+## Known issues in old articles
 
-Some old posts lost images during the WordPress export. An effort to recover
-them (from web archives etc.) was paused in mid-2026; a few images were
-recovered, most were not. If a post with missing images ever needs fixing,
-these are the working files:
-
-- `missing-images.txt` — per-post list of image filenames still missing.
-- `recovered-images/` — images recovered but not yet placed into posts.
-- `content/page/review/index.md` — a `draft: true` page linking every
-  affected post. Not built in production; view it with `hugo server -D`
-  at `/review/`.
-
-Keep these files in the repo, and keep the review page a draft so it never
-surfaces on the live site.
+Many old posts were damaged by the WordPress export: missing images,
+leftover WordPress shortcodes, dead image URLs. `KNOWN-ISSUES.md` at the
+repo root is the single backlog of these, one section per post. Whenever
+you find a broken element in an article, add it there before finishing the
+task, and remove entries you fix. `recovered-images/` holds images
+recovered from web archives that have not yet been placed into posts.

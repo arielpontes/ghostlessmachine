@@ -254,7 +254,7 @@ Posts still referencing dead `ghostlessmachine.com/wp-content/...`
 URLs make the theme's image helper call `resources.GetRemote`, which
 times out (~30s total per build) and logs WARNs. Not fatal, but each
 of these renders as a broken image on the live site — see
-`missing-images.txt` for the backlog.
+`KNOWN-ISSUES.md` for the backlog.
 
 ## WordPress Migration
 
