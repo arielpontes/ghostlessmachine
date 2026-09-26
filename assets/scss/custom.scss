@@ -184,8 +184,8 @@
 }
 
 // "Listen on: …" platform links under the tabs on the /podcasts/ page, and
-// the "Stay in touch: …" reader-action row after every post
-// (_partials/support-links.html).
+// the "Stay in touch: …" reader-action row after every post and on episode
+// pages (_partials/support-links.html).
 .podcast-platforms,
 .support-links {
     display: flex;
@@ -385,10 +385,5 @@
             color: var(--card-text-color-main);
         }
     }
-}
-
-// "Stay in touch:" row under the platform links on /podcasts/
-.template-podcasts .support-links {
-    margin-top: 12px;
 }
 

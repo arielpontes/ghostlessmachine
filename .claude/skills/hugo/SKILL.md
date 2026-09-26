@@ -348,8 +348,9 @@ newsletter, Ko-fi, Admonymous feedback) have one source of truth,
   three menu groups are `border-top`s in `custom.scss`.
 - The "Stay in touch:" row: `_partials/support-links.html`, rendered after
   the body of every post (from the `layouts/single.html` override, `post`
-  pages only), under the platform links on `/podcasts/` and inside the
-  episode card. It shares the chip styling of `.podcast-platforms`.
+  pages only) and inside the standalone episode card. Not on `/podcasts/`:
+  that tab renders with the sidebar, so the menu group is already in view.
+  It shares the chip styling of `.podcast-platforms`.
 
 A `/support/` page with a Substack embed and `button`/`substack`
 shortcodes existed briefly and was removed in September 2026 as redundant
