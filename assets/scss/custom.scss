@@ -108,6 +108,49 @@
     }
 }
 
+// The theme lays the social icons out in a single non-wrapping row, which
+// overflows into the article grid once the sidebar column gets narrow.
+.menu-social {
+    flex-wrap: wrap;
+}
+
+// The theme sizes the left sidebar as 20% / 15% of the container, which at
+// laptop widths (1024-1536px) is less than the seven-icon social row
+// (7 × 24px + 6 × 10px gap = 228px), so the last icon wraps. Give the
+// column a floor wide enough for the row in the three-column layout.
+.container.extended .left-sidebar {
+    @include respond(lg) {
+        min-width: 240px;
+    }
+}
+
+// Rules between the three menu groups: pages, reader actions (subscribe /
+// donate / feedback, rendered by sidebar/left.html) and the theme's bottom
+// section (language, dark mode).
+#main-menu .menu-actions,
+#main-menu .menu-bottom-section {
+    border-top: 1px solid var(--card-separator-color);
+    padding-top: var(--spacing-2xl);
+
+    @include respond(xl) {
+        padding-top: var(--spacing-xl);
+    }
+}
+
+// The action group reuses the nested-list layout of the bottom section.
+#main-menu .menu-actions {
+    ol {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-2xl);
+        padding-left: 0;
+
+        @include respond(xl) {
+            gap: var(--spacing-xl);
+        }
+    }
+}
+
 .sidebar {
     --sidebar-avatar-size: 200px !important;
 
@@ -327,8 +370,11 @@
             }
         }
 
-        .podcast-home,
-        .podcast-support {
+        .support-links {
+            margin-top: 20px;
+        }
+
+        .podcast-home {
             display: block;
             margin-top: 20px;
             padding: 12px 20px;
@@ -341,32 +387,8 @@
     }
 }
 
-// "Subscribe, support me, or give feedback →" line under the platform links
-// on /podcasts/ (the episode page styles its own above).
-.template-podcasts .podcast-support {
-    display: block;
+// "Stay in touch:" row under the platform links on /podcasts/
+.template-podcasts .support-links {
     margin-top: 12px;
-    text-align: center;
-    font-size: 1.4rem;
-    color: var(--card-text-color-secondary);
 }
 
-// /support/ page: Substack signup embed and the action buttons rendered by
-// the `substack` and `button` shortcodes.
-.substack-embed {
-    display: block;
-    max-width: 100%;
-    border: 1px solid var(--card-separator-color);
-    border-radius: var(--tag-border-radius);
-    background: #fff;
-}
-
-.support-button {
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: var(--tag-border-radius);
-    background: var(--accent-color);
-    color: var(--accent-color-text) !important;
-    font-weight: 600;
-    box-shadow: var(--shadow-l1);
-}

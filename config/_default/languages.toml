@@ -78,14 +78,6 @@
             icon   = "brand-mastodon"
             newTab = true
 
-    [[en.menu.social]]
-        identifier = "kofi"
-        name       = "Ko-fi"
-        url        = "https://ko-fi.com/arielpontes"
-        weight     = 8
-        [en.menu.social.params]
-            icon   = "coffee"
-            newTab = true
 
 [pt]
     languageName = "Português"
@@ -163,11 +155,3 @@
             icon   = "brand-mastodon"
             newTab = true
 
-    [[pt.menu.social]]
-        identifier = "kofi"
-        name       = "Ko-fi"
-        url        = "https://ko-fi.com/arielpontes"
-        weight     = 8
-        [pt.menu.social.params]
-            icon   = "coffee"
-            newTab = true

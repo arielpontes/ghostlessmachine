@@ -33,9 +33,8 @@ rssFullContent = true
     enabled  = true
     provider = "disqus"
 
-# Reader actions (subscribe / support / feedback). Rendered by
-# _partials/support-links.html, the `button` shortcode and /support/.
-# The sidebar Ko-fi icon is a separate menu.social entry in languages.toml.
+# Reader actions (subscribe / support / feedback). Rendered by the left
+# sidebar menu and _partials/support-links.html.
 [support]
     substack = "https://arielpontes.substack.com"
     kofi     = "https://ko-fi.com/arielpontes"

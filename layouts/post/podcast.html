@@ -41,7 +41,7 @@
             </div>
             {{ end }}
             {{ partial "podcast-platforms.html" (dict "Links" .Params.podcast) }}
-            {{ with site.GetPage "/page/support" }}<a class="podcast-support" href="{{ .RelPermalink }}">{{ if eq site.Language.Lang "pt" }}Assine, apoie ou dê feedback{{ else }}Subscribe, support me, or give feedback{{ end }} →</a>{{ end }}
+            {{ partial "support-links.html" . }}
             <a class="podcast-home" href="{{ site.Home.RelPermalink }}">{{ if eq site.Language.Lang "pt" }}Mais episódios e artigos{{ else }}More episodes and articles{{ end }} →</a>
         </main>
         {{ if .Params.podcast.audio }}

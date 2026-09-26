@@ -338,25 +338,25 @@ imported the same way.
 
 The three reader actions the WordPress homepage used to group (Substack
 newsletter, Ko-fi, Admonymous feedback) have one source of truth,
-`[support]` in `params.toml`, and four surfaces:
+`[support]` in `params.toml`, and two surfaces:
 
-- `/support/` (`content/page/support/`, EN + PT, in the main menu): the
-  URL to say in podcast outros and paste into show notes. Body is
-  markdown; the Substack signup iframe and the buttons come from the
-  `substack` and `button` shortcodes because raw HTML in content fails
-  markdownlint's MD033. `{{< button kofi >}}` looks the key up in
-  `[support]`. The page also owns the old `/mailing-list/` URL via
-  `aliases`.
-- The "Stay in touch:" row after every post: `_partials/support-links.html`,
-  rendered from the site's `layouts/single.html` override (a copy of the
-  theme's) for `post` pages only. It shares the chip styling of
-  `.podcast-platforms` in `custom.scss`.
-- One line linking to `/support/` under the platform links on `/podcasts/`
-  and on episode pages (`.podcast-support`).
-- The Ko-fi coffee icon in the sidebar social row: a `menu.social` entry
-  in `languages.toml`, duplicated per language like the others. Tabler
-  has no Ko-fi brand icon; `coffee`, `mail`, `message-circle` and `heart`
-  were downloaded from Tabler's outline set into `assets/icons/`.
+- A separated group at the end of the left menu, rendered by the site's
+  `sidebar/left.html` override as a nested `<ol>` (`.menu-actions`), the
+  same structure the theme uses for its language/dark-mode bottom
+  section. Menu entries in TOML cannot read `[support]`, so the group is
+  template code rather than `menu.main` entries. The rules between the
+  three menu groups are `border-top`s in `custom.scss`.
+- The "Stay in touch:" row: `_partials/support-links.html`, rendered after
+  the body of every post (from the `layouts/single.html` override, `post`
+  pages only), under the platform links on `/podcasts/` and inside the
+  episode card. It shares the chip styling of `.podcast-platforms`.
+
+A `/support/` page with a Substack embed and `button`/`substack`
+shortcodes existed briefly and was removed in September 2026 as redundant
+with the menu group. Tabler has no Ko-fi brand icon; `coffee`, `mail`,
+`message-circle` and `heart` come from Tabler's outline set in
+`assets/icons/`. The social row wraps (`.menu-social { flex-wrap }`): the
+theme's single row overflows into the post grid at narrow sidebar widths.
 
 ### Podcast episode pages (September 2026)
 

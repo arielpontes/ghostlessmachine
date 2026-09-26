@@ -64,6 +64,18 @@
             </a>
         </li>
         {{ end }}
+        {{/* Site override: reader actions (subscribe / donate / feedback) as a
+             separated group. URLs come from [support] in params.toml; labels
+             are inlined for the same reason as in home-tabs.html. */}}
+        {{- $pt := eq .Language.Lang "pt" -}}
+        {{- $s := .Site.Params.support -}}
+        <li class="menu-actions">
+            <ol class="menu">
+                <li><a href="{{ $s.substack }}" target="_blank">{{ partial "helper/icon" "mail" }}<span>{{ if $pt }}Assine{{ else }}Subscribe{{ end }}</span></a></li>
+                <li><a href="{{ $s.kofi }}" target="_blank">{{ partial "helper/icon" "coffee" }}<span>{{ if $pt }}Doe{{ else }}Donate{{ end }}</span></a></li>
+                <li><a href="{{ $s.feedback }}" target="_blank">{{ partial "helper/icon" "message-circle" }}<span>{{ if $pt }}Dê feedback{{ else }}Give feedback{{ end }}</span></a></li>
+            </ol>
+        </li>
         <li class="menu-bottom-section">
             <ol class="menu">
                 {{- $currentLanguageCode := .Language.Lang -}}
