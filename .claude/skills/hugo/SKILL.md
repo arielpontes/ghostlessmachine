@@ -302,6 +302,13 @@ What it does:
 - Preserves existing stub frontmatter and adds `medium_url` plus
   `description` (the Medium subtitle, shown as the card subtitle).
 - Refuses to overwrite a non-stub body (> 60 words) without `--force`.
+- Converts Medium footnotes (list items named `fnN` starting with a
+  `^` back-link, referenced from the body as superscripts linked to
+  `#fnN`) into Markdown footnotes (`[^N]` / `[^N]: text`), dropping the
+  "References" heading above them; Hugo renders its own footnote section.
+- Promotes Medium H4 to `##` when a post has no H3 (markdownlint MD001),
+  strips trailing/leading whitespace in paragraphs and quotes, and
+  escapes brackets inside link text (`[\[3\]](url)`, MD011).
 
 ### Member-only (paywalled) posts
 
@@ -319,20 +326,34 @@ endpoint with the `UserStreamOverview` query, `userId: "85e7326edac3"`,
 paginating with `pagingOptions.to` cursors. The RSS feed
 (`arielpontes.medium.com/feed`) only returns the 10 newest posts.
 
-### Redirecting list cards to Medium
+### Medium and Substack comment links (September 2026)
 
-Posts with `medium_url` in frontmatter link to Medium from the homepage
-and other list pages, while the local page still exists (reachable via
-search, archives single view, direct URL). This is done by overriding the
-theme partials in `layouts/_partials/article/components/header.html` and
-`details.html`: when `IsList` is true and `.Params.medium_url` is set, the
-card's image and title anchors use the Medium URL instead of
-`.RelPermalink`.
+Until September 2026, list cards of posts with `medium_url` linked to
+Medium instead of the local page (a WordPress-era habit). That override
+is gone: every post renders locally and
+`_partials/comment-links.html` (from the `layouts/single.html`
+override, `post` pages only) adds a "Share your comments on Medium or
+Substack" row after the body, built from the `medium_url` and
+`substack_url` front matter fields. Only the platforms present are
+rendered, so a post with neither field shows nothing. The Substack icon
+is a hand-drawn `assets/icons/brand-substack.svg` (Tabler has none).
 
-As of July 2026, everything from "Performative language" (2020-06) onward
-is imported with `medium_url` set. Older stubs (e.g. `conspiracy-theories`,
-`on-jordan-peterson`, `why-im-not-a-theist`) are still stubs and could be
-imported the same way.
+Disqus is disabled (`[comments] enabled = false`; no `[services.disqus]`
+block). The 50 human comments from the WordPress years (latest 2016) are
+archived in `data/archived_comments.json`, regenerated from
+`wordpress-export.xml` by `uv run scripts/export_comments.py`, in case
+they are ever rendered again.
+
+**The Medium GraphQL endpoint is now behind Cloudflare for non-browser
+clients** (curl and urllib get a 403 "Attention Required" page even on
+the `arielpontes.medium.com` subdomain), so `import_medium.py` can only
+run with `--json <file>` saved from a logged-in browser. The
+`_pprredirect_url` postmeta in `wordpress-export.xml` is the
+authoritative stub-to-Medium mapping; the six remaining one-line stubs
+without it (`aborto`, `cinismo-ateu`, `is-transsexuality-a-disease`,
+`differences-between-brazil-and-romania-part-2`, `futilidades-do-...`,
+`i-always-think-im-right`) were WordPress drafts never published
+anywhere and stay `draft: true`.
 
 ### Reader actions: subscribe / support / feedback (September 2026)
 
@@ -396,10 +417,9 @@ site. Front matter `layout: podcast` on a `post` resolves to
 
 Until September 2026 these posts carried `redirect_url` (a leftover from
 the WordPress-era redirects to YouTube), which made the episode URL
-bounce to YouTube. The `redirect_url` mechanism still exists — the
-`head/custom.html` override emits a `<meta http-equiv="refresh">` and the
-list-card overrides link out to it — but no post uses it any more. Don't
-add it back to episodes: it would make the episode page unreachable again.
+bounce to YouTube. The mechanism (a `head/custom.html` override emitting
+`<meta http-equiv="refresh">`) was removed along with the Medium list-card
+redirects; no post or template honours `redirect_url` any more.
 
 Template gotcha hit while keying the `/podcasts/` episode map by local
 URL: inside `{{ with .Params.podcast }}`, `$` is the template's root
