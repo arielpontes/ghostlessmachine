@@ -68,7 +68,9 @@ def http(url, data=None, headers=None, retries=4):
     for attempt in range(retries):
         try:
             req = urllib.request.Request(
-                url, data=data, headers={"User-Agent": "Mozilla/5.0", **(headers or {})}
+                url,
+                data=data,
+                headers={"User-Agent": "Mozilla/5.0", **(headers or {})},
             )
             return urllib.request.urlopen(req, timeout=60).read()
         except Exception as e:
@@ -86,7 +88,10 @@ def fetch_post(post_id):
         http(
             GRAPHQL_URL,
             data=payload,
-            headers={"Content-Type": "application/json", "Accept": "application/json"},
+            headers={
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
         )
     )
     post = (data.get("data") or {}).get("post")
@@ -96,7 +101,9 @@ def fetch_post(post_id):
 
 
 def slugify(title):
-    text = unicodedata.normalize("NFKD", title).encode("ascii", "ignore").decode()
+    text = (
+        unicodedata.normalize("NFKD", title).encode("ascii", "ignore").decode()
+    )
     text = re.sub(r"[''’]", "", text)
     text = re.sub(r"[^a-zA-Z0-9]+", "-", text).strip("-").lower()
     return text
@@ -140,7 +147,30 @@ def apply_markups(text, markups):
         insertions.append(((end, 0, -start, -i), close_tok))
     for (pos, _, _, _), tok in sorted(insertions, reverse=True):
         text = text[:pos] + tok + text[pos:]
-    return text
+    text = re.sub(r"\[\[([^\]]*)\]\]\(", r"[\\[\1\\]](", text)
+    return FOOTNOTE_REF.sub(r"[^\1]", text)
+
+
+FOOTNOTE_NAME = re.compile(r"fn(\d+)")
+# A footnote reference in body text: superscript digits linked to #fnN.
+FOOTNOTE_REF = re.compile(
+    r"\[[\u2070\u00b9\u00b2\u00b3\u2074-\u2079]+\]\(#fn(\d+)\)"
+)
+# The "^" back-link Medium puts at the start of each footnote paragraph.
+FOOTNOTE_BACKLINK = re.compile(r"^\[\^\]\(#[0-9a-f]+\)\s*")
+
+
+def is_footnote(paragraph):
+    return bool(FOOTNOTE_NAME.fullmatch(paragraph.get("name") or ""))
+
+
+def clean_text(text, strip_leading=False):
+    """Strip trailing (and optionally leading) whitespace on every line;
+    markdownlint flags both (MD009, MD027) and Medium leaves plenty."""
+    lines = text.split("\n")
+    if strip_leading:
+        lines = [line.strip() for line in lines]
+    return "\n".join(line.rstrip() for line in lines)
 
 
 def image_filename(image_id, bundle_dir):
@@ -185,13 +215,22 @@ def to_markdown(post, bundle_dir):
     """Convert paragraphs to (description, markdown_body)."""
     paragraphs = post["content"]["bodyModel"]["paragraphs"]
     section_starts = {
-        s["startIndex"] for s in post["content"]["bodyModel"].get("sections") or []
+        s["startIndex"]
+        for s in post["content"]["bodyModel"].get("sections") or []
     }
     preview_image_id = (post.get("previewImage") or {}).get("id")
     description = None
     blocks = []
+    footnotes = []  # rendered "[^N]: text" definitions, emitted last
     list_items = []  # (type, rendered_text)
     quote_paras = []  # rendered text of consecutive BQ/PQ paragraphs
+    # Medium's H3 is the top body heading (## here) and H4 the next level.
+    # Posts that only use H4 would start at ### (markdownlint MD001), so
+    # promote H4 when no H3 exists apart from the title.
+    has_h3 = any(
+        p["type"] == "H3" and not (i == 0 and p["text"] == post["title"])
+        for i, p in enumerate(paragraphs)
+    )
 
     def flush_list():
         if not list_items:
@@ -218,6 +257,15 @@ def to_markdown(post, bundle_dir):
 
     for idx, p in enumerate(paragraphs):
         ptype = p["type"]
+        if is_footnote(p):
+            # Medium footnotes are list items named fnN whose text starts
+            # with a "^" back-link; body references link to #fnN. Both
+            # become Markdown footnotes, which Hugo renders at the end.
+            number = FOOTNOTE_NAME.fullmatch(p["name"]).group(1)
+            note = apply_markups(p.get("text") or "", p.get("markups"))
+            note = FOOTNOTE_BACKLINK.sub("", note).replace("\n", " ")
+            footnotes.append(f"[^{number}]: {clean_text(note, True)}")
+            continue
         if ptype not in ("ULI", "OLI") or (
             list_items and list_items[0][0] != ptype
         ):
@@ -226,10 +274,16 @@ def to_markdown(post, bundle_dir):
             flush_quotes()
         if idx in section_starts and idx > 0 and blocks:
             blocks.append("---")
-        text = apply_markups(p.get("text") or "", p.get("markups"))
+        text = clean_text(
+            apply_markups(p.get("text") or "", p.get("markups")),
+            strip_leading=ptype in ("BQ", "PQ"),
+        )
+        next_p = paragraphs[idx + 1] if idx + 1 < len(paragraphs) else None
 
         if ptype == "H3" and idx == 0 and p["text"] == post["title"]:
             continue
+        if ptype in ("H3", "H4") and next_p and is_footnote(next_p):
+            continue  # "References" heading over the footnote list
         if ptype == "H4" and idx <= 2 and description is None and not blocks:
             description = p["text"]
             continue
@@ -250,7 +304,7 @@ def to_markdown(post, bundle_dir):
         elif ptype == "H3":
             blocks.append(f"## {text}")
         elif ptype == "H4":
-            blocks.append(f"### {text}")
+            blocks.append(f"{'##' if not has_h3 else '###'} {text}")
         elif ptype in ("BQ", "PQ"):
             quote_paras.append(text)
         elif ptype == "PRE":
@@ -272,11 +326,14 @@ def to_markdown(post, bundle_dir):
             if text:
                 blocks.append(text)
         else:
-            print(f"  WARNING: unhandled paragraph type {ptype}: {text[:80]!r}")
+            print(
+                f"  WARNING: unhandled paragraph type {ptype}: {text[:80]!r}"
+            )
             if text:
                 blocks.append(text)
     flush_list()
     flush_quotes()
+    blocks.extend(footnotes)
     return description, "\n\n".join(blocks) + "\n"
 
 
@@ -301,7 +358,8 @@ def update_index(bundle_dir, post, description, body, force):
             frontmatter += f'\ndescription: "{escaped}"'
     else:
         date = time.strftime(
-            "%Y-%m-%dT%H:%M:%S", time.localtime(post["firstPublishedAt"] / 1000)
+            "%Y-%m-%dT%H:%M:%S",
+            time.localtime(post["firstPublishedAt"] / 1000),
         )
         lines = [
             f'title: "{post["title"]}"',
@@ -313,7 +371,9 @@ def update_index(bundle_dir, post, description, body, force):
             lines.append(f'image: "{download_image(preview_id, bundle_dir)}"')
         lines.append(f'medium_url: "{medium_url}"')
         if description:
-            lines.append(f'description: "{description.replace(chr(34), chr(92) + chr(34))}"')
+            lines.append(
+                f'description: "{description.replace(chr(34), chr(92) + chr(34))}"'
+            )
         frontmatter = "\n".join(lines)
     index.write_text(f"---\n{frontmatter}\n---\n\n{body}")
     print(f"  wrote {index}")
@@ -325,7 +385,9 @@ def main():
     parser.add_argument(
         "--slug", help="URL slug of the local bundle under content/post/"
     )
-    parser.add_argument("--json", help="saved GraphQL response for member-only posts")
+    parser.add_argument(
+        "--json", help="saved GraphQL response for member-only posts"
+    )
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
 
@@ -365,7 +427,9 @@ def main():
             )
             bundle_dir = POSTS_DIR / f"{date_prefix}-{slug}"
     bundle_dir.mkdir(exist_ok=True)
-    print(f"{post['title']} -> {bundle_dir.relative_to(POSTS_DIR.parent.parent)}")
+    print(
+        f"{post['title']} -> {bundle_dir.relative_to(POSTS_DIR.parent.parent)}"
+    )
     description, body = to_markdown(post, bundle_dir)
     update_index(bundle_dir, post, description, body, args.force)
 

@@ -8,6 +8,7 @@ categories:
   - "Ethics"
   - "Feminism"
   - "Society"
+medium_url: "https://medium.com/humanist-voices/gender-quotas-fd936f226041"
 ---
 
 The subject of gender quotas was trending in Brazil a few months ago and I wrote about it in Portuguese. Now that the same topic has sprung in Romania, it's time to write an English version. As should be no surprise, there's a strong backlash against the idea of quotas and affirmative action in general. The anti-quota arguments are typically the same: that this type of approach is "anti-democratic", "unjust", "discriminatory", "unequal", etc. Although I agree that this is not an ideal solution, these arguments hardly sustain themselves. It may even be that there are legitimate reasons for us to be skeptical about quotas and affirmative action, but the aforementioned ones are certainly not in this category, and I'll explain why.

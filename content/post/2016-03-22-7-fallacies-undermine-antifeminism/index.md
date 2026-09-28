@@ -7,6 +7,7 @@ categories:
   - "Equality"
   - "Feminism"
   - "Rationalism"
+medium_url: "https://medium.com/humanist-voices/7-fallacies-that-undermine-antifeminism-efbc04ef014a"
 ---
 
 As a feminist I am often confronted, especially online, by self-declared antifeminists who passionately denounce the ideology resorting to all manner of creative accusations. But is there any basis for so vehemently attacking feminism? With the occasion of the women's month, I present the most common fallacies that compromise the antifeminist discourse.

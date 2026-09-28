@@ -8,6 +8,7 @@ categories:
   - "Ethics"
   - "Feminism"
   - "Society"
+medium_url: "https://medium.com/humanist-voices/why-django-girls-fd7e9f1ea77c"
 ---
 
 In February and March this year [Django Girls](https://djangogirls.org/) will be organizing free Django workshops for women in cities all over the world. As a Python/Django developer and feminist myself, I naturally applied as a coach. What for some may seem like a great initiative, however, is attacked by others as a gross display of hypocrisy and misandrist double-standard. In this article I hope to explain why supporting such events doesn't imply you hate men or seek to overthrow patriarchy and install a regime of female supremacy.
