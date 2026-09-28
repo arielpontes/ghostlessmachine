@@ -26,9 +26,11 @@
 {{ define "main" }}
     {{ partial "article/article.html" . }}
 
-    {{/* Site override: reader actions (subscribe / support / feedback)
-         after every post. Pages (About, Support) don't get it. */}}
+    {{/* Site override: comment links (Medium / Substack) and reader actions
+         (subscribe / support / feedback) after every post. Pages (About)
+         don't get them. */}}
     {{ if eq .Type "post" }}
+        {{ partial "comment-links.html" . }}
         {{ partial "support-links.html" . }}
     {{ end }}
 

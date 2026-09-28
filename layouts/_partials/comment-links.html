@@ -1,0 +1,15 @@
+{{/* "Share your comments on Medium or Substack" row after the body of a
+     post. Links come from the medium_url and substack_url front matter
+     fields; only the platforms present are rendered. Labels are inlined
+     for the same reason as in home-tabs.html. */}}
+{{- $pt := eq site.Language.Lang "pt" -}}
+{{- $medium := .Params.medium_url -}}
+{{- $substack := .Params.substack_url -}}
+{{- if or $medium $substack }}
+<nav class="support-links comment-links">
+    <span>{{ if $pt }}Comente no{{ else }}Share your comments on{{ end }}</span>
+    {{ with $medium }}<a href="{{ . }}" target="_blank">{{ partial "helper/icon" "brand-medium" }}Medium</a>{{ end }}
+    {{ if and $medium $substack }}<span>{{ if $pt }}ou no{{ else }}or{{ end }}</span>{{ end }}
+    {{ with $substack }}<a href="{{ . }}" target="_blank">{{ partial "helper/icon" "brand-substack" }}Substack</a>{{ end }}
+</nav>
+{{- end }}

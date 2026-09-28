@@ -1,11 +1,6 @@
 {{- $IsList := .IsList -}}
 {{- $Page := .Page -}}
-{{- /* Site override: on list pages, posts with redirect_url or medium_url in frontmatter link there instead of the local page. */ -}}
 {{- $link := $Page.RelPermalink -}}
-{{- $external := or $Page.Params.redirect_url $Page.Params.medium_url -}}
-{{- if and $IsList $external -}}
-    {{- $link = $external -}}
-{{- end -}}
 <div class="article-details">
     {{/* Guard on GetTerms (not .Params.categories) so nothing renders while the
          categories taxonomy is disabled in hugo.toml. */}}
