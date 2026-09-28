@@ -29,9 +29,10 @@ rssFullContent = true
     ]
     page = [{ type = "toc" }]
 
+# Comments moved to Medium/Substack (see _partials/comment-links.html).
+# The WordPress-era Disqus comments are archived in data/archived_comments.json.
 [comments]
-    enabled  = true
-    provider = "disqus"
+    enabled  = false
 
 # Reader actions (subscribe / support / feedback). Rendered by the left
 # sidebar menu and _partials/support-links.html.

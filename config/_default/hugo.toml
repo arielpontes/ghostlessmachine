@@ -17,6 +17,3 @@ theme                  = "hugo-theme-stack"
 [permalinks]
     post = "/p/:slug/"
     page = "/:slug/"
-
-[services.disqus]
-    shortname = "ghostlessmachine"
