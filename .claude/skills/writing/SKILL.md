@@ -77,7 +77,12 @@ and is never a finding by itself.
   stress point.
 - **Pinker** (The Sense of Style): curse of knowledge — a load-bearing
   term or assumption the intended reader cannot infer from context and
-  was never given.
+  was never given. Proper names count: a person, school, or movement
+  an educated lay reader cannot be assumed to know (Robert Owen, the
+  Saint-Simonians) needs a gloss of roughly 15 words or fewer at first
+  mention, saying who they were and why they matter here. If the name
+  itself does no work in the argument, replace it with the
+  description. Household names (Marx, Hayek, Thatcher) need none.
 - **Read-aloud (podcast)**: articles are narrated aloud, so flag
   structures that fail in audio even when they work on the page.
   Sentence length alone is never the problem (long sentences are
@@ -196,7 +201,10 @@ bare conjunction ("And...", "But..."); the author finds it awkward to
 read aloud. When the split point falls inside reported speech or
 a summarized opposing view, keep the attribution attached (e.g. "In
 their view, this leads to...") so the continuation doesn't read as
-the author's own claim.
+the author's own claim. When a draft adds a historical figure, school,
+or event, as the project instructions encourage, gloss it at first
+mention per the Pinker check: the drafter knows who Robert Owen was,
+the listener does not.
 
 The register of the user's chat prompts must never leak into drafted
 prose: in chat he narrates his mental process and writes carelessly on
