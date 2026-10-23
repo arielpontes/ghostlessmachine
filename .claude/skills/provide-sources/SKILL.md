@@ -12,6 +12,11 @@ description: >-
 Use this skill whenever the user asks to provide sources for one or more
 claims in a piece of writing.
 
+Every `uv run scripts/<name>.py` command below refers to the `scripts/`
+folder at the repo root, not to this skill's directory. Run it from the
+project root as written; prefixing the skill's base directory fails
+with "No such file or directory".
+
 ## Source selection
 
 1. Prefer lay articles from credible sources: mainstream news
@@ -28,6 +33,27 @@ claims in a piece of writing.
    through what is accessible — excerpts, quote pages, reviews,
    publisher summaries — and lower the source confidence if the
    supporting passage itself couldn't be read.
+5. For a definitional claim ("X is usually defined as..."), cite a
+   reference work whose name carries authority with a general reader:
+   academic encyclopedias first (Stanford Encyclopedia of Philosophy,
+   Internet Encyclopedia of Philosophy, Encyclopaedia Britannica), then
+   dictionaries from university presses or long-established publishers
+   (Oxford, Cambridge, Merriam-Webster). Never cite aggregator sites
+   such as dictionary.com or thefreedictionary.com, even though they
+   license their entries from real dictionaries: the brand lends the
+   claim no credibility. Expect lay dictionaries to disagree with each
+   other on contested terms (some learner's dictionaries define
+   "socialism" by equality rather than ownership), so a dictionary
+   alone rarely supports a "most sources agree" claim.
+6. When a respected source blocks automated fetching (Merriam-Webster
+   and Britannica return 403 to both WebFetch and curl, even with full
+   browser headers), do not swap in a lower-authority site that
+   happens to be fetchable. Read the page through the Claude in Chrome
+   tools instead (`navigate` + `get_page_text` in a new tab, closed
+   afterwards): the request comes from the user's real browser and
+   gets through. Only if the extension is unavailable, cite the
+   respected source anyway, say in the response that its text could
+   not be verified, and ask the user to confirm the passage.
 
 ## Link to the passage, not the page
 
