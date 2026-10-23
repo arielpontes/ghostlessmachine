@@ -25,8 +25,11 @@ survive being read aloud. The skill is used in two modes:
   it against the rules below. This is an audit, not an exercise of
   taste: every finding must cite the rule it violates by name and
   quote the offending passage. Anything that cannot be tied to a rule
-  does not get reported. Report findings in the chat response only;
-  do not edit the draft unless the user asks for fixes to be applied.
+  does not get reported. Run two passes: the argument and audience
+  checks on the whole draft, then a separate sentence-level pass for
+  mechanics and grammar, because a whole-draft read misses
+  word-level slips. Report findings in the chat response only; do not
+  edit the draft unless the user asks for fixes to be applied.
 
 ## Voice and lenience (governs everything below)
 
@@ -166,6 +169,11 @@ the choices below are findings, never the choices themselves:
   `oldid` URL), not the live page; flag live links under quotes.
 - Em dashes only in blockquote attributions; in prose prefer commas,
   periods, or parentheses.
+- Grammar and idiom errors are findings: wrong prepositions ("a guess
+  of" for "a guess at"), agreement errors, misused set phrases, and
+  dangling modifiers. These are objective, so the lenience rule does
+  not apply, but a casual or spoken construction the author uses on
+  purpose ("gonna", sentence fragments) is never one.
 
 ## AI-slop deny-list
 
