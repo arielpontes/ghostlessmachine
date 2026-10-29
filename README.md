@@ -90,7 +90,7 @@ delete, or repurpose):
 
 ## Deployment
 
-The site is deployed to GitHub Pages via GitHub Actions. Push to `master` to
+The site is deployed to GitHub Pages via GitHub Actions. Push to `main` to
 trigger a build.
 
 ## Customization
